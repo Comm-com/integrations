@@ -1,5 +1,6 @@
 name: Pingprophet MNP
 description: MNP integration with Ping Prophet
+overview: Enables number portability lookup
 service: Enrichment
 solutions:
   - SMS Marketing
