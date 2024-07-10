@@ -88,7 +88,7 @@ custom_fields:
     type: string
     description: If the contact is valid
 
-balance:
+billing:
   managed_balance: true
   overview: |
     The cost will be calculated based on the MNP requests.

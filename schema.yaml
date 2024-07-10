@@ -140,7 +140,7 @@ properties:
         description:
           type: string
       required: [resource, name, type, description]
-  balance:
+  billing:
     type: object
     properties:
       managed_balance:
