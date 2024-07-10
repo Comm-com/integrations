@@ -1,0 +1,163 @@
+type: object
+properties:
+  name:
+    type: string
+  description:
+    type: string
+  overview:
+    type: string
+  service:
+    type: string
+    enum: [Enrichment]
+  solutions:
+    type: array
+    items:
+      type: string
+      enum: [SMS Marketing, SMS Hub]
+  tags:
+    type: array
+    items:
+      type: string
+  type:
+    type: string
+    enum: [mnp]
+  exclude_if_contact:
+    type: array
+    items:
+      type: string
+      enum: [hlr]
+  required_fields:
+    type: array
+    items:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: [boolean]
+        name:
+          type: string
+        description:
+          type: string
+        default:
+          type: boolean
+        required:
+          type: boolean
+      required: [type, name, description, default, required]
+  scopes:
+    type: array
+    items:
+      type: object
+      properties:
+        method:
+          type: string
+          enum: [post]
+        endpoint:
+          type: string
+        reason:
+          type: string
+      required: [method, endpoint, reason]
+  webhooks:
+    type: object
+    properties:
+      live:
+        type: string
+        format: uri
+      sandbox:
+        type: string
+        format: uri
+    required: [live, sandbox]
+  events:
+    type: object
+    properties:
+      subscribed:
+        type: array
+        items:
+          type: object
+          properties:
+            type:
+              type: string
+            reason:
+              type: string
+            hold_until_response:
+              type: boolean
+            type_priority:
+              type: integer
+            is_optional:
+              type: boolean
+          required: [type, reason, hold_until_response, type_priority]
+      errors:
+        type: array
+        items:
+          type: object
+          properties:
+            type:
+              type: string
+            description:
+              type: string
+          required: [type, description]
+      success_response:
+        type: object
+        properties:
+          to_send:
+            type: array
+            items:
+              type: object
+              properties:
+                type:
+                  type: string
+                description:
+                  type: string
+          number_is_valid:
+            type: array
+            items:
+              type: object
+              properties:
+                type:
+                  type: string
+                description:
+                  type: string
+          success:
+            type: array
+            items:
+              type: object
+              properties:
+                type:
+                  type: string
+                description:
+                  type: string
+        required: [to_send, number_is_valid, success]
+  custom_fields:
+    type: array
+    items:
+      type: object
+      properties:
+        resource:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        description:
+          type: string
+      required: [resource, name, type, description]
+  balance:
+    type: object
+    properties:
+      managed_balance:
+        type: boolean
+      cost:
+        type: array
+        items:
+          type: object
+          properties:
+            amount:
+              type: number
+            currency:
+              type: string
+            description:
+              type: string
+          required: [amount, currency, description]
+    required: [managed_balance, cost]
+  validate_api_key:
+    type: boolean
+required: [name, description, overview, service, solutions, tags, type, required_fields, scopes, webhooks, events, custom_fields, balance, validate_api_key]
