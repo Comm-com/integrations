@@ -7,6 +7,7 @@ overview: |
   This allows users to verify if a number has been ported to another carrier.
   It ensures the accuracy of routing and improves message delivery success rates.
 
+
   **Contact comm.com support for more information**
 service: Enrichment
 solutions:
@@ -89,6 +90,9 @@ custom_fields:
 
 balance:
   managed_balance: true
+  overview: |
+    The cost will be calculated based on the MNP requests.
+    The minimum required platform balance is 10.
   cost:
     - amount: 0.001
       currency: USD

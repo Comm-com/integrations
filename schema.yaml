@@ -145,6 +145,8 @@ properties:
     properties:
       managed_balance:
         type: boolean
+      overview:
+        type: string
       cost:
         type: array
         items:
@@ -157,7 +159,7 @@ properties:
             description:
               type: string
           required: [amount, currency, description]
-    required: [managed_balance, cost]
+    required: [managed_balance]
   validate_api_key:
     type: boolean
 required: [name, description, overview, service, solutions, tags, type, required_fields, scopes, webhooks, events, custom_fields, balance, validate_api_key]
