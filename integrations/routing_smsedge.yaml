@@ -1,0 +1,42 @@
+name: SMSEdge SMS Routes
+description: Adds SMS routes to your account
+service: SMS Routes
+solutions:
+  - SMS Marketing
+  - SMS Hub
+tags: ['SMS', 'Routes']
+type: sms_routes
+scopes:
+  - method: post
+    endpoint: sms/routes/create
+    reason: Updates contacts is valid reason and is valid status
+  - method: post
+    endpoint: billing/charge
+    reason: Billing for SMS sent requests
+
+required_fields:
+  - type: select
+    name: traffic_type
+    description: The type of route to create
+    options:
+      - name: Promotional
+        value: promotional
+        description: For marketing traffic with URL inside the SMS
+      - name: OTP
+        value: otp
+        description: OTP route, only numbers are passed in the SMS
+    required: true
+
+webhooks:
+  live: 'https://pingprophet.com/mnp-webhook'
+  sandbox: 'https://pingprophet.com/sandbox-mnp-webhook'
+
+
+balance:
+  managed_balance: true
+  cost:
+    - amount: null
+      currency: EUR
+      description: You can view the routes after they were created and the cost will be calculated based on the SMS sent via them.
+      minimum_required_platform_balance: 10
+validate_api_key: false

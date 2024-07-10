@@ -1,0 +1,88 @@
+name: Pingprophet MNP
+description: MNP integration with Ping Prophet
+service: Enrichment
+solutions:
+  - SMS Marketing
+  - SMS Hub
+tags: ['MNP', 'Number Validation', 'SMS']
+type: mnp
+exclude_if_contact:
+  - hlr
+
+required_fields:
+  - type: boolean
+    name: revalidate_contacts
+    description: Re-Validate contacts that were already MNP'd
+    default: false
+    required: true
+
+scopes:
+  - method: post
+    endpoint: contacts/upsert
+    reason: Updates contacts is valid reason and is valid status
+  - method: post
+    endpoint: billing/charge
+    reason: Billing for MNP requests
+
+webhooks:
+  live: 'https://pingprophet.com/mnp-webhook'
+  sandbox: 'https://pingprophet.com/sandbox-mnp-webhook'
+
+events:
+  subscribed:
+    - type: contact_created
+      reason: MNP every new contact
+      hold_until_response: true
+      type_priority: 4
+    - type: sms_created
+      reason: MNP every new endpoint sms, returns if to send and upserts contacts
+      hold_until_response: true
+      is_optional: true
+      type_priority: 4
+    - type: campaign_sms_created
+      reason: MNP every new campaign sms, returns if to send and updates contacts
+      hold_until_response: true
+      is_optional: true
+      type_priority: 4
+  errors:
+    - type: number
+      description: Invalid number
+    - type: unknown
+      description: unknown error
+
+  success_response:
+    to_send:
+      - type: boolean|null
+        description: If the sms should be sent, if MNP not available for country/number null returned
+    number_is_valid:
+      - type: boolean|null
+        description: If the number is valid, if MNP not available for country/number null returned
+    success:
+      - type: boolean
+        description: If the MNP request was successful, false if MNP not available for country/number
+
+custom_fields:
+  - resource: contact
+    name: hlr_res_raw
+    type: string
+    description: Raw response from MNP
+  - resource: contact
+    name: hlr_is_valid
+    type: string
+    description: If the contact is valid
+  - resource: sms
+    name: hlr_res_raw
+    type: string
+    description: Raw response from MNP
+  - resource: sms
+    name: hlr_is_valid
+    type: string
+    description: If the contact is valid
+
+balance:
+  managed_balance: true
+  cost:
+    - amount: 0.001
+      currency: USD
+      description: MNP successful request
+validate_api_key: false

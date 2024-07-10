@@ -1,0 +1,81 @@
+name: Pingprophet HLR
+description: HLR integration with Ping Prophet
+service: Enrichment
+solutions:
+  - SMS Marketing
+  - SMS Hub
+tags: ['HLR', 'Number Validation', 'SMS']
+type: hlr
+required_fields:
+  - type: boolean
+    name: revalidate_contacts
+    description: Re-HLR contacts that were already HLR'd
+    default: false
+    required: true
+scopes:
+  - method: post
+    endpoint: contacts/upsert
+    reason: Updates contacts is valid reason and is valid status
+  - method: post
+    endpoint: billing/charge
+    reason: Billing for MNP requests
+webhooks:
+  live: 'https://pingprophet.com/webhook'
+  sandbox: 'https://pingprophet.com/sandbox_webhook'
+events:
+  subscribed:
+    - type: contact_created
+      reason: HLR every new contact
+      hold_until_response: true
+      type_priority: 5
+    - type: sms_created
+      reason: HLR every new endpoint sms, returns if to send and upserts contacts
+      hold_until_response: true
+      is_optional: true
+      type_priority: 5
+    - type: campaign_sms_created
+      reason: HLR every new campaign sms, returns if to send and updates contacts
+      hold_until_response: true
+      is_optional: true
+      type_priority: 5
+  errors:
+    - type: number
+      description: Invalid number
+    - type: unknown
+      description: unknown error
+
+  success_response:
+    to_send:
+      - type: boolean|null
+        description: If the sms should be sent, if HLR not available for country/number null returned
+    number_is_valid:
+      - type: boolean|null
+        description: If the number is valid, if HLR not available for country/number null returned
+    success:
+      - type: boolean
+        description: If the HLR request was successful, false if HLR not available for country/number
+
+custom_fields:
+  - resource: contact
+    name: hlr_res_raw
+    type: string
+    description: Raw response from HLR
+  - resource: contact
+    name: hlr_is_valid
+    type: string
+    description: If the contact is valid
+  - resource: sms
+    name: hlr_res_raw
+    type: string
+    description: Raw response from HLR
+  - resource: sms
+    name: hlr_is_valid
+    type: string
+    description: If the contact is valid
+balance:
+  managed_balance: true
+  cost:
+    - amount: 0.01
+      currency: USD
+      description: HLR successful request
+validate_api_key: false
