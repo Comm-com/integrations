@@ -2,6 +2,12 @@
 
 name: Pingprophet MNP
 description: MNP integration with Ping Prophet
+overview: |
+  Enables number portability lookup.
+  This allows users to verify if a number has been ported to another carrier.
+  It ensures the accuracy of routing and improves message delivery success rates.
+
+  **Contact comm.com support for more information**
 service: Enrichment
 solutions:
   - SMS Marketing

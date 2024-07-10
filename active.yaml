@@ -1,4 +1,4 @@
 integrations:
-  - integrations/hlr.yaml
   - integrations/mnp.yaml
+  - integrations/hlr.yaml
   - integrations/routing_smsedge.yaml
