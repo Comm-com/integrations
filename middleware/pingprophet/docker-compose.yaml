@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+  middleware:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+    ports:
+      - 8002:8000
+    networks:
+      - middleware-network
+    depends_on:
+      - middleware-pgsql
+
+  middleware-pgsql:
+    image: 'postgres:15'
+    command: 'postgres -c wal_level=logical'
+    ports:
+      - '${FORWARD_DB_PORT:-5432}:5432'
+    environment:
+      PGPASSWORD: '${DB_PASSWORD:-secret}'
+      POSTGRES_DB: '${DB_DATABASE}'
+      POSTGRES_USER: '${DB_USERNAME}'
+      POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+    volumes:
+      - 'middleware-pgsql:/var/lib/postgresql/data'
+    networks:
+      - middleware-network
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "${DB_DATABASE}", "-U", "${DB_USERNAME}" ]
+      retries: 3
+      timeout: 5s
+
+networks:
+  middleware-network:
+    name: middleware-network
+    driver: bridge
+
+volumes:
+  middleware-pgsql:
+    driver: local
