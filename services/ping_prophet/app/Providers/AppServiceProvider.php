@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Providers;
+namespace App\Providers;
 
 use Dedoc\Scramble\Scramble;
 use Illuminate\Routing\Route;

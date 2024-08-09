@@ -8,6 +8,7 @@
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/services/ping_prophet/storage/app" />
       <excludeFolder url="file://$MODULE_DIR$/services/ping_prophet/storage/framework" />
+      <excludeFolder url="file://$MODULE_DIR$/services/ping_prophet/vendor/_laravel_idea" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

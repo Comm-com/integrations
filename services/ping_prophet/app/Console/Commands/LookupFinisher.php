@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Console\Commands;
+namespace App\Console\Commands;
 
-use app\Services\LookupService;
+use App\Services\LookupService;
 use Illuminate\Console\Command;
 
 class LookupFinisher extends Command

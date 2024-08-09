@@ -1,9 +1,9 @@
 <?php
 
-namespace app\Jobs;
+namespace App\Jobs;
 
-use app\Data\MnpRequestData;
-use app\Models\ApiRequest;
+use App\Data\MnpRequestData;
+use App\Models\ApiRequest;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;

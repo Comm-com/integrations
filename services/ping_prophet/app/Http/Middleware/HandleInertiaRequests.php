@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Http\Middleware;
+namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
@@ -36,9 +36,9 @@ class HandleInertiaRequests extends Middleware
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
             ],
-            ...$request->user() ? [
-                'balance' => app(\App\Services\BalanceService::class, ['team_id' => auth()->user()->current_team_id])->total()
-            ] : [],
+//            ...$request->user() ? [
+//                'balance' => app(\App\Services\BalanceService::class, ['team_id' => auth()->user()->current_team_id])->total()
+//            ] : [],
         ];
     }
 }

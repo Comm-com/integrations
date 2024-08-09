@@ -1,0 +1,2426 @@
+[
+  {
+    "iso": "GB",
+    "brand": "BT Group",
+    "mcc": 234,
+    "mnc": 0
+  },
+  {
+    "iso": "GB",
+    "brand": "Vectone Mobile",
+    "mcc": 234,
+    "mnc": 1
+  },
+  {
+    "iso": "GB",
+    "brand": "O2",
+    "mcc": 234,
+    "mnc": 2
+  },
+  {
+    "iso": "GB",
+    "brand": "Jersey Airtel",
+    "mcc": 234,
+    "mnc": 3
+  },
+  {
+    "iso": "GB",
+    "brand": "FMS Solutions",
+    "mcc": 234,
+    "mnc": 4
+  },
+  {
+    "iso": "GB",
+    "brand": "Vodafone",
+    "mcc": 234,
+    "mnc": 7
+  },
+  {
+    "iso": "GB",
+    "brand": "BT OnePhone",
+    "mcc": 234,
+    "mnc": 8
+  },
+  {
+    "iso": "GB",
+    "brand": "Tismi",
+    "mcc": 234,
+    "mnc": 9
+  },
+  {
+    "iso": "GB",
+    "brand": "O2",
+    "mcc": 234,
+    "mnc": 10
+  },
+  {
+    "iso": "GB",
+    "brand": "O2",
+    "mcc": 234,
+    "mnc": 11
+  },
+  {
+    "iso": "GB",
+    "brand": "Network Rail",
+    "mcc": 234,
+    "mnc": 12
+  },
+  {
+    "iso": "GB",
+    "brand": "Network Rail",
+    "mcc": 234,
+    "mnc": 13
+  },
+  {
+    "iso": "GB",
+    "brand": "LINK Mobility",
+    "mcc": 234,
+    "mnc": 14
+  },
+  {
+    "iso": "GB",
+    "brand": "Vodafone",
+    "mcc": 234,
+    "mnc": 15
+  },
+  {
+    "iso": "GB",
+    "brand": "Talk Talk",
+    "mcc": 234,
+    "mnc": 16
+  },
+  {
+    "iso": "GB",
+    "brand": "FlexTel",
+    "mcc": 234,
+    "mnc": 17
+  },
+  {
+    "iso": "GB",
+    "brand": "Cloud9",
+    "mcc": 234,
+    "mnc": 18
+  },
+  {
+    "iso": "GB",
+    "brand": "TeleWare",
+    "mcc": 234,
+    "mnc": 19
+  },
+  {
+    "iso": "GB",
+    "brand": "3",
+    "mcc": 234,
+    "mnc": 20
+  },
+  {
+    "iso": "GB",
+    "brand": "Telesign Mobile",
+    "mcc": 234,
+    "mnc": 22
+  },
+  {
+    "iso": "GB",
+    "brand": "Icron Network",
+    "mcc": 234,
+    "mnc": 23
+  },
+  {
+    "iso": "GB",
+    "brand": "Greenfone",
+    "mcc": 234,
+    "mnc": 24
+  },
+  {
+    "iso": "GB",
+    "brand": "Truphone",
+    "mcc": 234,
+    "mnc": 25
+  },
+  {
+    "iso": "GB",
+    "brand": "Lycamobile",
+    "mcc": 234,
+    "mnc": 26
+  },
+  {
+    "iso": "GB",
+    "brand": "Tata Communications Ltd",
+    "mcc": 234,
+    "mnc": 27
+  },
+  {
+    "iso": "GB",
+    "brand": "Marathon Telecom",
+    "mcc": 234,
+    "mnc": 28
+  },
+  {
+    "iso": "GB",
+    "brand": "aql",
+    "mcc": 234,
+    "mnc": 29
+  },
+  {
+    "iso": "GB",
+    "brand": "EE/Everything Everywhere",
+    "mcc": 234,
+    "mnc": 30
+  },
+  {
+    "iso": "GB",
+    "brand": "EE/Everything Everywhere",
+    "mcc": 234,
+    "mnc": 31
+  },
+  {
+    "iso": "GB",
+    "brand": "EE/Everything Everywhere",
+    "mcc": 234,
+    "mnc": 32
+  },
+  {
+    "iso": "GB",
+    "brand": "EE/Everything Everywhere",
+    "mcc": 234,
+    "mnc": 33
+  },
+  {
+    "iso": "GB",
+    "brand": "Orange",
+    "mcc": 234,
+    "mnc": 34
+  },
+  {
+    "iso": "GB",
+    "brand": "JSC Ingenicum",
+    "mcc": 234,
+    "mnc": 35
+  },
+  {
+    "iso": "GB",
+    "brand": "Sure Isle of Man",
+    "mcc": 234,
+    "mnc": 36
+  },
+  {
+    "iso": "GB",
+    "brand": "Synectiv",
+    "mcc": 234,
+    "mnc": 37
+  },
+  {
+    "iso": "GB",
+    "brand": "Virgin Mobile",
+    "mcc": 234,
+    "mnc": 38
+  },
+  {
+    "iso": "GB",
+    "brand": "Gamma Mobile",
+    "mcc": 234,
+    "mnc": 39
+  },
+  {
+    "iso": "GB",
+    "brand": "spusu",
+    "mcc": 234,
+    "mnc": 40
+  },
+  {
+    "iso": "GB",
+    "brand": "JT Mobile",
+    "mcc": 234,
+    "mnc": 50
+  },
+  {
+    "iso": "GB",
+    "brand": "now broadband",
+    "mcc": 234,
+    "mnc": 51
+  },
+  {
+    "iso": "GB",
+    "brand": "Sure Guernsey",
+    "mcc": 234,
+    "mnc": 55
+  },
+  {
+    "iso": "GB",
+    "brand": "NCSC",
+    "mcc": 234,
+    "mnc": 56
+  },
+  {
+    "iso": "GB",
+    "brand": "Sky",
+    "mcc": 234,
+    "mnc": 57
+  },
+  {
+    "iso": "GB",
+    "brand": "Manx Telecom Mobile",
+    "mcc": 234,
+    "mnc": 58
+  },
+  {
+    "iso": "GB",
+    "brand": "Home Office",
+    "mcc": 234,
+    "mnc": 71
+  },
+  {
+    "iso": "GB",
+    "brand": "Hanhaa Mobile",
+    "mcc": 234,
+    "mnc": 72
+  },
+  {
+    "iso": "GB",
+    "brand": "Pareteum",
+    "mcc": 234,
+    "mnc": 74
+  },
+  {
+    "iso": "GB",
+    "brand": "Mass Response Service GmbH",
+    "mcc": 234,
+    "mnc": 75
+  },
+  {
+    "iso": "GB",
+    "brand": "BT Group",
+    "mcc": 234,
+    "mnc": 76
+  },
+  {
+    "iso": "GB",
+    "brand": "Vodafone",
+    "mcc": 234,
+    "mnc": 77
+  },
+  {
+    "iso": "GB",
+    "brand": "Airwave",
+    "mcc": 234,
+    "mnc": 78
+  },
+  {
+    "iso": "GB",
+    "brand": "Vodafone",
+    "mcc": 234,
+    "mnc": 89
+  },
+  {
+    "iso": "GB",
+    "brand": "Vodafone",
+    "mcc": 234,
+    "mnc": 91
+  },
+  {
+    "iso": "GB",
+    "brand": "Vodafone",
+    "mcc": 234,
+    "mnc": 92
+  },
+  {
+    "iso": "GB",
+    "brand": "3",
+    "mcc": 234,
+    "mnc": 94
+  },
+  {
+    "iso": "GB",
+    "brand": "Network Rail",
+    "mcc": 234,
+    "mnc": 95
+  },
+  {
+    "iso": "GB",
+    "brand": "Sure Jersey",
+    "mcc": 234,
+    "mnc": 99
+  },
+  {
+    "iso": "GB",
+    "brand": "Failed Calls",
+    "mcc": 234,
+    "mnc": 299
+  },
+  {
+    "iso": "GB",
+    "brand": "Fix Line",
+    "mcc": 234,
+    "mnc": 999
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 4
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 310,
+    "mnc": 10
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 12
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 13
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 310,
+    "mnc": 16
+  },
+  {
+    "iso": "US",
+    "brand": "Union Wireless",
+    "mcc": 310,
+    "mnc": 20
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 310,
+    "mnc": 30
+  },
+  {
+    "iso": "US",
+    "brand": "ETEX",
+    "mcc": 310,
+    "mnc": 35
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 310,
+    "mnc": 70
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 310,
+    "mnc": 80
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 310,
+    "mnc": 90
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 310,
+    "mnc": 120
+  },
+  {
+    "iso": "US",
+    "brand": "Appalachian Wireless",
+    "mcc": 310,
+    "mnc": 130
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 310,
+    "mnc": 150
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 310,
+    "mnc": 160
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 310,
+    "mnc": 170
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 310,
+    "mnc": 180
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 310,
+    "mnc": 190
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 310,
+    "mnc": 200
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 310,
+    "mnc": 210
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 310,
+    "mnc": 230
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 310,
+    "mnc": 240
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 310,
+    "mnc": 250
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 310,
+    "mnc": 260
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 310,
+    "mnc": 270
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 271
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 272
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 273
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 274
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 275
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 276
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 277
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 278
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 279
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 280
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 281
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 282
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 283
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 284
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 285
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 286
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 287
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 288
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 289
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 310,
+    "mnc": 310
+  },
+  {
+    "iso": "US",
+    "brand": "Limitless",
+    "mcc": 310,
+    "mnc": 340
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 350
+  },
+  {
+    "iso": "US",
+    "brand": "Pioneer Cellular",
+    "mcc": 310,
+    "mnc": 360
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 310,
+    "mnc": 380
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 390
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 310,
+    "mnc": 410
+  },
+  {
+    "iso": "US",
+    "brand": "GCI Wireless",
+    "mcc": 310,
+    "mnc": 430
+  },
+  {
+    "iso": "US",
+    "brand": "Viaero Wireless",
+    "mcc": 310,
+    "mnc": 450
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 480
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 481
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 482
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 483
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 484
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 485
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 486
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 487
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 488
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 489
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 310,
+    "mnc": 490
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 310,
+    "mnc": 530
+  },
+  {
+    "iso": "US",
+    "brand": "OWTC",
+    "mcc": 310,
+    "mnc": 540
+  },
+  {
+    "iso": "US",
+    "brand": "Pioneer Cellular",
+    "mcc": 310,
+    "mnc": 570
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 590
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 591
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 592
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 593
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 594
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 595
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 596
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 597
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 598
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 599
+  },
+  {
+    "iso": "US",
+    "brand": "Cellcom",
+    "mcc": 310,
+    "mnc": 600
+  },
+  {
+    "iso": "US",
+    "brand": "Choice Wireless",
+    "mcc": 310,
+    "mnc": 630
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 310,
+    "mnc": 660
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 310,
+    "mnc": 670
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 310,
+    "mnc": 680
+  },
+  {
+    "iso": "US",
+    "brand": "Limitless",
+    "mcc": 310,
+    "mnc": 690
+  },
+  {
+    "iso": "US",
+    "brand": "cv cellular",
+    "mcc": 310,
+    "mnc": 700
+  },
+  {
+    "iso": "US",
+    "brand": "ASTAC Cellular",
+    "mcc": 310,
+    "mnc": 710
+  },
+  {
+    "iso": "US",
+    "brand": "Viaero Wireless",
+    "mcc": 310,
+    "mnc": 740
+  },
+  {
+    "iso": "US",
+    "brand": "Appalachian Wireless",
+    "mcc": 310,
+    "mnc": 750
+  },
+  {
+    "iso": "US",
+    "brand": "ASTAC Cellular",
+    "mcc": 310,
+    "mnc": 760
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 770
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 310,
+    "mnc": 800
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 820
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 310,
+    "mnc": 830
+  },
+  {
+    "iso": "US",
+    "brand": "West Central Wireless",
+    "mcc": 310,
+    "mnc": 860
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 310,
+    "mnc": 870
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 310,
+    "mnc": 880
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 310,
+    "mnc": 882
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 890
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 891
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 892
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 893
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 894
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 895
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 896
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 897
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 898
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 899
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 310,
+    "mnc": 910
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 310,
+    "mnc": 940
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 310,
+    "mnc": 950
+  },
+  {
+    "iso": "US",
+    "brand": "Evolve",
+    "mcc": 310,
+    "mnc": 990
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 311,
+    "mnc": 10
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 12
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 13
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 311,
+    "mnc": 16
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 311,
+    "mnc": 30
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 311,
+    "mnc": 70
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 311,
+    "mnc": 80
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 311,
+    "mnc": 90
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 110
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 311,
+    "mnc": 120
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 311,
+    "mnc": 150
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 311,
+    "mnc": 160
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 311,
+    "mnc": 170
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 311,
+    "mnc": 180
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 311,
+    "mnc": 190
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 311,
+    "mnc": 200
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 311,
+    "mnc": 210
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 311,
+    "mnc": 230
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 311,
+    "mnc": 240
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 311,
+    "mnc": 250
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 311,
+    "mnc": 260
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 311,
+    "mnc": 270
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 271
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 272
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 273
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 274
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 275
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 276
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 277
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 278
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 279
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 280
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 281
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 282
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 283
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 284
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 285
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 286
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 287
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 288
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 289
+  },
+  {
+    "iso": "US",
+    "brand": "Northstar Technology",
+    "mcc": 311,
+    "mnc": 299
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 311,
+    "mnc": 311
+  },
+  {
+    "iso": "US",
+    "brand": "Limitless",
+    "mcc": 311,
+    "mnc": 340
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 350
+  },
+  {
+    "iso": "US",
+    "brand": "Pioneer Cellular",
+    "mcc": 311,
+    "mnc": 360
+  },
+  {
+    "iso": "US",
+    "brand": "GCI Wireless",
+    "mcc": 311,
+    "mnc": 370
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 311,
+    "mnc": 380
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 390
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 311,
+    "mnc": 410
+  },
+  {
+    "iso": "US",
+    "brand": "GCI Wireless",
+    "mcc": 311,
+    "mnc": 430
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 480
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 481
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 482
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 483
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 484
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 485
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 486
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 487
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 488
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 489
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 311,
+    "mnc": 490
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 311,
+    "mnc": 530
+  },
+  {
+    "iso": "US",
+    "brand": "Pioneer Cellular",
+    "mcc": 311,
+    "mnc": 570
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 590
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 591
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 592
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 593
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 594
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 595
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 596
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 597
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 598
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 599
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 311,
+    "mnc": 660
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 311,
+    "mnc": 670
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 311,
+    "mnc": 680
+  },
+  {
+    "iso": "US",
+    "brand": "Limitless",
+    "mcc": 311,
+    "mnc": 690
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 770
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 311,
+    "mnc": 800
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 820
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 311,
+    "mnc": 830
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 311,
+    "mnc": 870
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 311,
+    "mnc": 880
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 311,
+    "mnc": 882
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 890
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 891
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 892
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 893
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 894
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 895
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 896
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 897
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 898
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 899
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 311,
+    "mnc": 910
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 311,
+    "mnc": 940
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 311,
+    "mnc": 950
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 312,
+    "mnc": 10
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 12
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 13
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 312,
+    "mnc": 16
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 312,
+    "mnc": 30
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 312,
+    "mnc": 70
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 312,
+    "mnc": 80
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 312,
+    "mnc": 90
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 110
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 312,
+    "mnc": 120
+  },
+  {
+    "iso": "US",
+    "brand": "Appalachian Wireless",
+    "mcc": 312,
+    "mnc": 130
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 312,
+    "mnc": 150
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 312,
+    "mnc": 160
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 312,
+    "mnc": 170
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 312,
+    "mnc": 180
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 312,
+    "mnc": 190
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 312,
+    "mnc": 200
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 312,
+    "mnc": 210
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 312,
+    "mnc": 230
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 312,
+    "mnc": 240
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 312,
+    "mnc": 250
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 312,
+    "mnc": 260
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 312,
+    "mnc": 270
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 271
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 272
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 273
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 274
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 275
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 276
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 277
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 278
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 279
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 280
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 281
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 282
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 283
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 284
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 285
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 286
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 287
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 288
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 289
+  },
+  {
+    "iso": "US",
+    "brand": "Northstar Technology",
+    "mcc": 312,
+    "mnc": 299
+  },
+  {
+    "iso": "US",
+    "brand": "Limitless",
+    "mcc": 312,
+    "mnc": 340
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 350
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 312,
+    "mnc": 380
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 390
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 312,
+    "mnc": 410
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 480
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 481
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 482
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 483
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 484
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 485
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 486
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 487
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 488
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 489
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 312,
+    "mnc": 490
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 312,
+    "mnc": 530
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 590
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 591
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 592
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 593
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 594
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 595
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 596
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 597
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 598
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 599
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 312,
+    "mnc": 660
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 312,
+    "mnc": 670
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 312,
+    "mnc": 680
+  },
+  {
+    "iso": "US",
+    "brand": "Limitless",
+    "mcc": 312,
+    "mnc": 690
+  },
+  {
+    "iso": "US",
+    "brand": "ASTAC Cellular",
+    "mcc": 312,
+    "mnc": 710
+  },
+  {
+    "iso": "US",
+    "brand": "Appalachian Wireless",
+    "mcc": 312,
+    "mnc": 750
+  },
+  {
+    "iso": "US",
+    "brand": "ASTAC Cellular",
+    "mcc": 312,
+    "mnc": 760
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 770
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 312,
+    "mnc": 800
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 820
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 312,
+    "mnc": 830
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 312,
+    "mnc": 870
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 312,
+    "mnc": 880
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 312,
+    "mnc": 882
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 890
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 891
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 892
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 893
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 894
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 895
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 896
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 897
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 898
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 899
+  },
+  {
+    "iso": "US",
+    "brand": "Verizon Wireless",
+    "mcc": 312,
+    "mnc": 910
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 312,
+    "mnc": 940
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 312,
+    "mnc": 950
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 313,
+    "mnc": 16
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 313,
+    "mnc": 30
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 313,
+    "mnc": 70
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 313,
+    "mnc": 80
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 313,
+    "mnc": 90
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 313,
+    "mnc": 150
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 313,
+    "mnc": 170
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 313,
+    "mnc": 180
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 313,
+    "mnc": 210
+  },
+  {
+    "iso": "US",
+    "brand": "Pioneer Cellular",
+    "mcc": 313,
+    "mnc": 280
+  },
+  {
+    "iso": "US",
+    "brand": "Northstar Technology",
+    "mcc": 313,
+    "mnc": 299
+  },
+  {
+    "iso": "US",
+    "brand": "Pioneer Cellular",
+    "mcc": 313,
+    "mnc": 360
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 313,
+    "mnc": 380
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 313,
+    "mnc": 410
+  },
+  {
+    "iso": "US",
+    "brand": "Pioneer Cellular",
+    "mcc": 313,
+    "mnc": 570
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 313,
+    "mnc": 670
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 313,
+    "mnc": 680
+  },
+  {
+    "iso": "US",
+    "brand": "AT&T Mobility",
+    "mcc": 313,
+    "mnc": 950
+  },
+  {
+    "iso": "US",
+    "brand": "Northstar Technology",
+    "mcc": 314,
+    "mnc": 299
+  },
+  {
+    "iso": "US",
+    "brand": "Northstar Technology",
+    "mcc": 315,
+    "mnc": 299
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 316,
+    "mnc": 10
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 316,
+    "mnc": 120
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 316,
+    "mnc": 160
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 316,
+    "mnc": 190
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 316,
+    "mnc": 200
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 316,
+    "mnc": 230
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 316,
+    "mnc": 240
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 316,
+    "mnc": 250
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 316,
+    "mnc": 260
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 316,
+    "mnc": 270
+  },
+  {
+    "iso": "US",
+    "brand": "Northstar Technology",
+    "mcc": 316,
+    "mnc": 299
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 316,
+    "mnc": 490
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 316,
+    "mnc": 530
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 316,
+    "mnc": 660
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 316,
+    "mnc": 800
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 316,
+    "mnc": 830
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 316,
+    "mnc": 870
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 316,
+    "mnc": 880
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 316,
+    "mnc": 882
+  },
+  {
+    "iso": "US",
+    "brand": "T-Mobile",
+    "mcc": 316,
+    "mnc": 940
+  }
+]

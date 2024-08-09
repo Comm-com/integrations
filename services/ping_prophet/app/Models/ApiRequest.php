@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Models;
+namespace App\Models;
 
-use app\Data\ApiRequestMetaData;
+use App\Data\ApiRequestMetaData;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,18 +26,22 @@ class ApiRequest extends Model
         return $this->belongsTo(Team::class);
     }
 
-    public function metaData(): ApiRequestMetaData
+    public function getMetaData(): ApiRequestMetaData
     {
         return new ApiRequestMetaData(
             data: $this->meta['numbers'] ?? [],
             cost: $this->meta['cost'] ?? 0,
+            callback_url: $this->meta['callback_url'] ?? null,
+            completed_at: $this->meta['completed_at'] ?? null,
+            billed_at: $this->meta['billed_at'] ?? null,
         );
     }
 
     public function setMetaData(ApiRequestMetaData $metaData, bool $save = true): self
     {
         $meta = $this->meta ?? [];
-        $this->meta = array_merge($meta, $metaData->toArray());
+        $meta = array_merge($meta, $metaData->toArray());
+        $this->meta = $meta;
 
         if ($save) {
             $this->save();

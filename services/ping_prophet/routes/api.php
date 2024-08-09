@@ -26,11 +26,6 @@ Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
     Route::apiResource('mnp', \App\Http\Controllers\MnpController::class)->only(['index', 'store']);
 
     Route::get('user', [\App\Http\Controllers\UserController::class, 'show']);
-    
-    Route::prefix('user')->group(function () {
-        Route::get('balance', [\App\Http\Controllers\BalanceController::class, 'index']);
-        Route::get('balance/total', [\App\Http\Controllers\BalanceController::class, 'total']);
-    });
 
     Route::prefix('integrations')->group(function () {
         Route::post('activate', [\App\Http\Controllers\IntegrationsController::class, 'activate']);

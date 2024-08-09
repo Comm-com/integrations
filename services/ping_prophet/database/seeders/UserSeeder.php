@@ -2,7 +2,7 @@
 
 namespace database\seeders;
 
-use app\Models\User;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Laravel\Sanctum\PersonalAccessToken;
 
@@ -16,7 +16,6 @@ class UserSeeder extends Seeder
         /** @var User $user */
         $user = User::factory()
             ->withPersonalTeam()
-            ->withBalance()
             ->create([
                 'name' => 'Test User',
                 'email' => 'user@user.com',

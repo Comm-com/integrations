@@ -2,9 +2,8 @@
 
 namespace database\factories;
 
-use app\Models\Team;
-use app\Models\User;
-use app\Services\BalanceService;
+use App\Models\Team;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -15,6 +14,8 @@ use Laravel\Jetstream\Features;
  */
 class UserFactory extends Factory
 {
+    protected $model = \App\Models\User::class;
+
     /**
      * The current password being used by the factory.
      */
@@ -69,12 +70,5 @@ class UserFactory extends Factory
                 ->when(is_callable($callback), $callback),
             'ownedTeams'
         );
-    }
-
-    public function withBalance($amount = 1000): static
-    {
-        return $this->afterCreating(function (User $user) use ($amount) {
-            app(BalanceService::class, ['team_id' => $user->currentTeam->id])->addBalance($amount);
-        });
     }
 }

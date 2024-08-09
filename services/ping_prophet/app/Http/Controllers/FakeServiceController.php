@@ -1,9 +1,10 @@
 <?php
 
-namespace app\Http\Controllers;
+namespace App\Http\Controllers;
 
-use app\Enums\XConnectReasonCodeEnum;
+use App\Enums\XConnectReasonCodeEnum;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class FakeServiceController extends Controller
 {
@@ -18,16 +19,21 @@ class FakeServiceController extends Controller
                 'rc' => XConnectReasonCodeEnum::invalid_query_format->value,
                 'mcc' => null,
                 'mnc' => null,
+                'cc' => null,
+                'cn' => null,
                 'nt' => 'wireless',
             ]);
         }
 
-        $network = MobileNetwork::inRandomOrder()->first();
+        $networks = File::get(storage_path('mobile_networks.json'));
+        $network = collect(json_decode($networks, true))->random();
 
         return [
             'rc' => XConnectReasonCodeEnum::successful->value,
-            'mcc' => $network->mcc,
-            'mnc' => $network->mnc,
+            'mcc' => $network['mcc'],
+            'mnc' => $network['mnc'],
+            'cc' => $network['iso'],
+            'cn' => $network['brand'],
             'nt' => 'wireless',
         ];
     }

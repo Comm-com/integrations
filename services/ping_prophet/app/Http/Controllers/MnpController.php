@@ -1,14 +1,13 @@
 <?php
 
-namespace app\Http\Controllers;
+namespace App\Http\Controllers;
 
-use app\Data\ApiRequestMetaData;
-use app\Enums\ApiRequestStatusEnum;
-use app\Enums\LookupTypeEnum;
-use app\Jobs\MnpDispatchJob;
-use app\Models\ApiRequest;
-use app\Services\BalanceService;
-use app\Services\LookupService;
+use App\Data\ApiRequestMetaData;
+use App\Enums\ApiRequestStatusEnum;
+use App\Enums\LookupTypeEnum;
+use App\Jobs\MnpDispatchJob;
+use App\Models\ApiRequest;
+use App\Services\LookupService;
 use Illuminate\Http\Request;
 
 class MnpController extends Controller
@@ -38,11 +37,11 @@ class MnpController extends Controller
 //            return response()->json(['status' => 'error', 'message' => 'Insufficient balance'], 402);
 //        }
 
-        $meta = ApiRequestMetaData::from([
-            'data' => $validated['data'],
-            'cost' => $cost,
-            'callback_url' => $validated['callback_url'],
-        ]);
+        $meta = new ApiRequestMetaData(
+            data: $validated['data'],
+            cost: $cost,
+            callback_url: $validated['callback_url'],
+        );
         $apiRequest = ApiRequest::create([
             'team_id' => $request->user()->currentTeam->id,
             'request_type' => LookupTypeEnum::mnp->name,

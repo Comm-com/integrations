@@ -37,7 +37,8 @@ services:
             POSTGRES_USER: '${DB_USERNAME}'
             POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
         volumes:
-            - 'ping-prophet-pgsql:/var/lib/postgresql/data'
+#            - 'ping-prophet-pgsql:/var/lib/postgresql/data'
+            - './docker/pgsql/create-testing-database.sql:/docker-entrypoint-initdb.d/10-create-testing-database.sql'
         networks:
             - sail
         healthcheck:

@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Services\Providers;
+namespace App\Services\Providers;
 
-use app\Data\MnpRequestData;
+use App\Data\MnpRequestData;
 
 abstract class BaseProvider
 {

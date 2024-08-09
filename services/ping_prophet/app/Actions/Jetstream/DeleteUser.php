@@ -1,9 +1,9 @@
 <?php
 
-namespace app\Actions\Jetstream;
+namespace App\Actions\Jetstream;
 
-use app\Models\Team;
-use app\Models\User;
+use App\Models\Team;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Laravel\Jetstream\Contracts\DeletesTeams;
 use Laravel\Jetstream\Contracts\DeletesUsers;

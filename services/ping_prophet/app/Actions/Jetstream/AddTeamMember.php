@@ -1,9 +1,9 @@
 <?php
 
-namespace app\Actions\Jetstream;
+namespace App\Actions\Jetstream;
 
-use app\Models\Team;
-use app\Models\User;
+use App\Models\Team;
+use App\Models\User;
 use Closure;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;

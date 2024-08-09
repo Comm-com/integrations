@@ -1,15 +1,14 @@
 <?php
 
-namespace app\Services;
+namespace App\Services;
 
-use app\Data\ApiRequestMetaData;
-use app\Data\MobileNetworkData;
-use app\Enums\ApiRequestStatusEnum;
-use app\Enums\EventTypeEnum;
-use app\Enums\LookupResultStatusEnum;
-use app\Enums\LookupTypeEnum;
-use app\Models\ApiRequest;
-use app\Models\LookupResult;
+use App\Data\ApiRequestMetaData;
+use App\Enums\ApiRequestStatusEnum;
+use App\Enums\EventTypeEnum;
+use App\Enums\LookupResultStatusEnum;
+use App\Enums\LookupTypeEnum;
+use App\Models\ApiRequest;
+use App\Models\LookupResult;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -66,32 +65,9 @@ class LookupService
         return false;
     }
 
-    public function refundFails(ApiRequest $apiRequest): void
-    {
-        $results = LookupResult::where('api_request_id', $apiRequest->id)
-            ->where('status', '!=', LookupResultStatusEnum::success->value)
-            ->get()
-            ->count();
-
-        if ($results === 0) {
-            return;
-        }
-
-        $amountToRefund = $this->calculateCost($results, $apiRequest->request_type);
-
-        app(BalanceService::class, ['team_id' => $apiRequest->team_id])
-            ->addBalance(
-                amount: $amountToRefund,
-                meta: [
-                    'api_request_id' => $apiRequest->id,
-                    'reason' => 'Lookup failed',
-                ],
-            );
-    }
-
     public function callback(ApiRequest $apiRequest): void
     {
-        $metaData = ApiRequestMetaData::from($apiRequest->meta);
+        $metaData = $apiRequest->getMetaData();
 
         if ($metaData->callback_url === null) {
             return;
@@ -102,24 +78,23 @@ class LookupService
             'callback_url' => $metaData->callback_url,
         ]);
 
-        LookupResult::with(['network'])
-            ->where('api_request_id', $apiRequest->id)
+        LookupResult::where('api_request_id', $apiRequest->id)
             ->where('status', LookupResultStatusEnum::success->value)
-            ->chunk(1000, function ($results) use ($apiRequest, $metaData) {
+            ->chunkById(1000, function ($results) use ($apiRequest, $metaData) {
                 $payload = [
                     'event_type' => EventTypeEnum::mnp_response->value,
                     'request_id' => $apiRequest->id,
-                    'data' => $results->map(function ($result) {
-                        /** @var LookupResult $result */
-                        $networkData = MobileNetworkData::from($result->network?->toArray() ?? []);
-
+                    'data' => $results->map(function (LookupResult $result) {
                         return [
                             'number' => $result->phone_normalized,
                             'foreign_id' => $result->foreign_id,
-                            'network_id' => $result->network_id,
                             'verified' => (int)$result->verified,
+                            'mcc' => $result->mcc,
+                            'mnc' => $result->mnc,
+                            'brand_name' => $result->brand_name,
+                            'country_code' => $result->country_code,
+                            'reason_code' => $result->reason_code,
                             'raw_response' => $result->raw_response,
-                            ...$networkData->toArray(),
                         ];
                     }),
                 ];
@@ -130,7 +105,7 @@ class LookupService
 
     public function bill_user(ApiRequest $apiRequest): void
     {
-        $metaData = ApiRequestMetaData::from($apiRequest->meta);
+        $metaData = $apiRequest->getMetaData();
         $totalSuccess = LookupResult::where('api_request_id', $apiRequest->id)
             ->where('status', '!=', LookupResultStatusEnum::success->value)
             ->get()
