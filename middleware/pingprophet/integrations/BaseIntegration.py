@@ -20,7 +20,10 @@ class BaseIntegration:
         raise NotImplementedError("callback not implemented")
 
     async def store_team_token(self, data):
-        query = "insert into team_access_tokens (id, team_id, integration_id, access_token) values (:id, :team_id, :integration_id, :access_token);"
+        query = """
+        insert into team_access_tokens (id, team_id, integration_id, access_token) 
+        values (:id, :team_id, :integration_id, :access_token);
+        """
         values = {
             "id": str(uuid.uuid4()),
             "team_id": data['team_id'],

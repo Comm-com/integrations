@@ -56,6 +56,7 @@ class DatabaseWrapper:
             sqlalchemy.Column("id", sqlalchemy.UUID, primary_key=True),
             sqlalchemy.Column("team_id", sqlalchemy.UUID),
             sqlalchemy.Column("integration_id", sqlalchemy.UUID),
+            sqlalchemy.Column("integration_hash", sqlalchemy.String),
             sqlalchemy.Column("access_token", sqlalchemy.String),
             sqlalchemy.Column("created_at", sqlalchemy.DateTime, server_default=sqlalchemy.sql.func.now()),
             sqlalchemy.Column("deleted_at", sqlalchemy.DateTime)
