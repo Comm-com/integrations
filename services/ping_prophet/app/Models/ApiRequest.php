@@ -33,4 +33,16 @@ class ApiRequest extends Model
             cost: $this->meta['cost'] ?? 0,
         );
     }
+
+    public function setMetaData(ApiRequestMetaData $metaData, bool $save = true): self
+    {
+        $meta = $this->meta;
+        $this->meta = array_merge($meta, $metaData->toArray());
+
+        if ($save) {
+            $this->save();
+        }
+
+        return $this;
+    }
 }

@@ -6,12 +6,13 @@ import os
 import uuid
 from integrations.BaseIntegration import BaseIntegration
 
+
 class HLRPingProphet(BaseIntegration):
     def __init__(self, db, logger, background_tasks):
         super().__init__(db, logger, background_tasks)
 
         self.url = os.getenv('PING_PROPHET_URL', 'https://pingprophet.com')
-        self.bearer_token = None
+        self.bearer_token = os.getenv('PING_PROPHET_API_KEY')
 
     async def test_api_key(self):
         timeout = aiohttp.ClientTimeout(total=5)
@@ -27,35 +28,36 @@ class HLRPingProphet(BaseIntegration):
                 self.logger.debug("Test API Key response: %s", res)
 
                 if resp.status != 200:
-                    return { "ok": False, "message": res['message'] or "Invalid token" }
-                
-                return { "ok": True, "message": "Integration status updated" }
-            
-    async def integration_deactivate(self, data): 
-        timeout = aiohttp.ClientTimeout(total=5)
+                    return {"ok": False, "message": res['message'] or "Invalid token"}
+
+                return {"ok": True, "message": "API key is valid"}
+
+    async def integration_deactivate(self, data):
+        # timeout = aiohttp.ClientTimeout(total=5)
 
         await self.destroy_team_token(data)
 
-        async with aiohttp.ClientSession(timeout=timeout) as session:
-            headers = {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Authorization": "Bearer " + self.bearer_token,
-            }
-            async with session.post(f"{self.url}/api/v1/integrations/deactivate", headers=headers) as resp:
-                res = await resp.json()
-                self.logger.debug("Integration Deactivate response: %s", res)
+        # async with aiohttp.ClientSession(timeout=timeout) as session:
+        #     headers = {
+        #         "Content-Type": "application/json",
+        #         "Accept": "application/json",
+        #         "Authorization": "Bearer " + self.bearer_token,
+        #     }
+        #     async with session.post(f"{self.url}/api/v1/integrations/deactivate", headers=headers) as resp:
+        #         res = await resp.json()
+        #         self.logger.debug("Integration Deactivate response: %s", res)
 
-                if resp.status == 401:
-                    return { "ok": True, "message": "Integration already deactivated" }
+        #         if resp.status == 401:
+        #             return { "ok": True, "message": "Integration already deactivated" }
 
-                if resp.status != 200:
-                    return { "ok": False, "message": res['message'] or "Invalid token" }
-                
-                return { "ok": True, "message": "Integration status updated" }
-            
+        #         if resp.status != 200:
+        #             return { "ok": False, "message": res['message'] or "Invalid token" }
+
+        #         return { "ok": True, "message": "Integration deactivated" }
+        return {"ok": True, "message": "Integration deactivated"}
+
     async def mnp_request(self, data):
-        timeout = aiohttp.ClientTimeout(total=60) # 1 minute
+        timeout = aiohttp.ClientTimeout(total=60)  # 1 minute
         async with aiohttp.ClientSession(timeout=timeout) as session:
             headers = {
                 "Content-Type": "application/json",
@@ -64,64 +66,72 @@ class HLRPingProphet(BaseIntegration):
             }
             contacts = []
             for contact in data['data']:
-                contactItem = {
+                contact_item = {
                     "number": contact['phone_normalized'],
                     "foreign_id": contact['contact_id'] if 'contact_id' in contact else str(uuid.uuid4()),
                 }
-                contacts.append(contactItem)
+                contacts.append(contact_item)
 
-            queryData = {
+            query_data = {
                 "data": contacts,
                 "callback_url": f"{os.getenv('CALLBACK_URL')}/HLRPingProphet"
             }
-            async with session.post(f"{self.url}/api/v1/mnp", headers=headers, json=queryData) as resp:
+            async with session.post(f"{self.url}/api/v1/mnp", headers=headers, json=query_data) as resp:
                 res = await resp.json()
                 self.logger.debug("MNP Request response: %s", res)
 
                 if resp.status != 200:
-                    return { 
-                        "ok": False, 
+                    return {
+                        "ok": False,
                         "message": res['message'] or "Invalid token",
                         "status_code": resp.status,
                         "notification": resp.status == 402,
                     }
-                
-                query = "insert into ping_prophet_requests (id, team_id, integration_id, api_request_id) values (gen_random_uuid(), :team_id, :integration_id, :api_request_id);"
+
+                query = """
+                    insert into ping_prophet_requests (id, team_id, integration_id, api_request_id, webhook_request_id) 
+                    values (:id, :team_id, :integration_id, :api_request_id, :webhook_request_id);
+                """
                 values = {
+                    "id": str(uuid.uuid4()),
                     "team_id": data['team_id'],
                     "integration_id": data['integration_id'],
                     "api_request_id": res['data']['request_id'],
+                    "webhook_request_id": data['webhook_request_id'],
                 }
                 await self.db.execute(query, values)
-                
-                return { "ok": True, "message": "Integration status updated" }
 
+                return {"ok": True, "message": "MNP request sent"}
+
+    #
+    # /events endpoint
+    #
     async def handle_event(self, data):
         self.logger.debug("Handling event: %s", data)
 
         event_type = data['event_type']
-        required_fields = data['required_fields']
+        # required_fields = data['required_fields']
 
-        self.bearer_token = self.get_value_by_id(required_fields, "api_key")
-        if self.bearer_token is None:
-            return { "ok": False, "message": "missing required field: api_key" }
+        # self.bearer_token = self.get_value_by_id(required_fields, "api_key")
+        # if self.bearer_token is None:
+        # return { "ok": False, "message": "missing required field: api_key" }
 
         if event_type == "integration/test":
             return await self.test_api_key()
-        
+
         if event_type == "integration/activated":
             return await self.store_team_token(data)
-        
+
         if event_type == "integration/deactivated":
             return await self.integration_deactivate(data)
-            
+
         if event_type in ["contact/created", "sms/created"]:
             return await self.mnp_request(data)
 
         # todo: handle other event types
 
-        return { "ok": False, "message": "unknown event type" }
-    
+        return {"ok": False, "message": "unknown event type"}
+
     async def store_mnp_response(self, data):
         self.logger.debug("Storing mnp response: %s", data)
 
@@ -130,21 +140,22 @@ class HLRPingProphet(BaseIntegration):
         values = {
             "request_id": request_id,
         }
-        row = await self.db.fetch_one(query, values)
+        pp_request = await self.db.fetch_one(query, values)
 
-        if row is None:
+        if pp_request is None:
             self.logger.debug("Request not found: %s", data)
-            return { "ok": False, "message": "request not found" }
-        
+            return {"ok": False, "message": "request not found"}
+
         items = data['data']
         query = """
         insert into lookup_results (id, api_request_id, foreign_id, phone_normalized, network_id, verified, raw_response) 
-        values (gen_random_uuid(), :api_request_id, :foreign_id, :phone_normalized, :network_id, :verified, :raw_response);
+        values (:id, :api_request_id, :foreign_id, :phone_normalized, :network_id, :verified, :raw_response);
         """
         values = []
         for item in items:
             values.append({
-                "api_request_id": row['api_request_id'],
+                "id": str(uuid.uuid4()),
+                "api_request_id": pp_request['api_request_id'],
                 "foreign_id": item['foreign_id'],
                 "phone_normalized": item['number'],
                 "network_id": item['network_id'],
@@ -166,25 +177,25 @@ class HLRPingProphet(BaseIntegration):
         }
         await self.db.execute(query, values)
 
-        await self.patch_contacts(row)
+        await self.patch_contacts(pp_request)
 
-        return { "ok": True, "message": "response stored" }
+        return {"ok": True, "message": "mnp response stored"}
 
-    async def patch_contacts(self, request):
-        self.logger.debug("Patching contacts, request ID: %s", request['api_request_id'])
+    async def patch_contacts(self, pp_request):
+        self.logger.debug("Patching contacts, request ID: %s", pp_request['api_request_id'])
 
-        team_access_token = await self.get_team_token(request)
+        team_access_token = await self.get_team_token(pp_request)
 
         if team_access_token is None:
-            self.logger.debug("No api key: %s", request['api_request_id'])
+            self.logger.debug("No api key: %s", pp_request['api_request_id'])
 
-            query = "update ping_prophet_requests set status = 'no_api_key' where api_request_id = :request_id;"
+            query = "update ping_prophet_requests set status = 'failed' where api_request_id = :request_id;"
             values = {
-                "request_id": request['api_request_id'],
+                "request_id": pp_request['api_request_id'],
             }
             await self.db.execute(query, values)
-            return { "ok": False, "message": "no api key" }
-        
+            return {"ok": False, "message": "no api key"}
+
         while True:
             query = """
                 select * from lookup_results 
@@ -192,12 +203,12 @@ class HLRPingProphet(BaseIntegration):
                 limit 100;
             """
             values = {
-                "request_id": request['api_request_id'],
+                "request_id": pp_request['api_request_id'],
             }
             results = await self.db.fetch_all(query, values)
 
             if len(results) == 0:
-                self.logger.debug("No more contacts to patch: %s", request['api_request_id'])
+                self.logger.debug("No more contacts to patch: %s", pp_request['api_request_id'])
                 query = "update ping_prophet_requests set status = 'completed' where api_request_id = :request_id;"
                 break
 
@@ -218,7 +229,7 @@ class HLRPingProphet(BaseIntegration):
                 contacts.append(contactData)
 
             req = {
-                "team_id": str(request['team_id']),
+                "team_id": str(pp_request['team_id']),
                 "contacts": contacts,
             }
             headers = {
@@ -227,18 +238,19 @@ class HLRPingProphet(BaseIntegration):
                 "Accept": "application/json",
             }
             response = requests.post(f"{os.getenv('COMM_URL')}/api/v1/contacts/upsert", json=req, headers=headers)
-            self.logger.info("Contact patch response (team id: %s), Response: %s", request['team_id'], response.json())
+            self.logger.info("Contact patch response (team id: %s), Response: %s", pp_request['team_id'],
+                             response.json())
             placeholders = ', '.join(':id' + str(i) for i in range(len(ids)))
 
             if response.status_code != 200:
-                query = "update lookup_results set status = 'error' where id in ({placeholders});"
+                query = "update lookup_results set status = 'failed' where id in ({placeholders});"
                 values = {
                     f"id{i}": id for i, id in enumerate(ids)
                 }
                 await self.db.execute(query, values)
                 continue
 
-            query = f"update lookup_results set status = 'patched' where id in ({placeholders});"
+            query = f"update lookup_results set status = 'completed' where id in ({placeholders});"
             values = {
                 f"id{i}": id for i, id in enumerate(ids)
             }
@@ -248,13 +260,74 @@ class HLRPingProphet(BaseIntegration):
 
         query = "update ping_prophet_requests set status = 'completed' where api_request_id = :request_id;"
         values = {
-            "request_id": request['api_request_id'],
+            "request_id": pp_request['api_request_id'],
         }
         await self.db.execute(query, values)
-        self.logger.debug("Contacts patched: %s", request['api_request_id'])
-        
-        return { "ok": True, "message": "contacts patched" }
-    
+        self.logger.debug("Contacts patched: %s", pp_request['api_request_id'])
+
+        return {"ok": True, "message": "contacts patched"}
+
+    async def billing_charge(self, data):
+        self.logger.debug("Billing charge: %s", data)
+
+        request_id = data['request_id']
+        query = "select * from ping_prophet_requests where api_request_id = :request_id;"
+        values = {
+            "request_id": request_id,
+        }
+        pp_request = await self.db.fetch_one(query, values)
+
+        if pp_request is None:
+            self.logger.debug("Request not found: %s", data)
+            return {"ok": False, "message": "request not found"}
+
+        team_access_token = await self.get_team_token(pp_request)
+
+        if team_access_token is None:
+            self.logger.debug("No api key: %s", pp_request['api_request_id'])
+
+            query = "update ping_prophet_requests set status = 'failed' where api_request_id = :request_id;"
+            values = {
+                "request_id": pp_request['api_request_id'],
+            }
+            await self.db.execute(query, values)
+            return {"ok": False, "message": "no api key"}
+
+            # 'event_type' => EventTypeEnum::billing_charge->value,
+            # 'request_id' => $apiRequest->id,
+            # 'cost' => $cost,
+            # 'reason' => "MNP lookup for {$totalSuccess} numbers",
+
+        metadata = {
+            "reason": data['reason'],
+            "integration_id": str(pp_request['integration_id']),
+            "webhook_request_id": str(pp_request['webhook_request_id']),
+        }
+        req = {
+            "cost": data['cost'],
+            "meta": metadata,
+        }
+        headers = {
+            "Authorization": f"Bearer {team_access_token}",
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        }
+        response = requests.post(f"{os.getenv('COMM_URL')}/api/v1/billing/charge", json=req, headers=headers)
+        self.logger.info("Billing charge response (team id: %s), Response: %s", pp_request['team_id'], response.json())
+
+        return {"ok": True, "message": "billing charged"}
+
+    #
+    # /callback endpoint
+    #
     async def callback(self, data):
-        self.background_tasks.add_task(self.store_mnp_response, data)
-        return { "ok": True, "message": "callback received" }
+        event_type = data['event_type']
+
+        if event_type == "mnp/response":
+            self.background_tasks.add_task(self.store_mnp_response, data)
+            return {"ok": True, "message": "callback received"}
+
+        if event_type == "billing/charge":
+            return await self.billing_charge(data)
+
+        return {"ok": False, "message": "unknown event type"}

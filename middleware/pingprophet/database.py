@@ -2,6 +2,7 @@ from databases import Database
 import sqlalchemy
 import os
 
+
 class DatabaseWrapper:
     def __init__(self):
         db_host = os.getenv('DB_HOST', 'localhost')
@@ -21,16 +22,16 @@ class DatabaseWrapper:
 
     async def execute(self, query, values):
         return await self.database.execute(query, values)
-    
+
     async def execute_many(self, query, values):
         return await self.database.execute_many(query, values)
-    
+
     async def fetch_val(self, query, values):
         return await self.database.fetch_val(query, values)
 
     async def fetch_one(self, query, values):
         return await self.database.fetch_one(query, values)
-    
+
     async def fetch_all(self, query, values):
         return await self.database.fetch_all(query, values)
 
@@ -59,7 +60,7 @@ class DatabaseWrapper:
             sqlalchemy.Column("created_at", sqlalchemy.DateTime, server_default=sqlalchemy.sql.func.now()),
             sqlalchemy.Column("deleted_at", sqlalchemy.DateTime)
         )
-    
+
     def ping_prophet_requests(self):
         if "ping_prophet_requests" in self.metadata.tables:
             return self.metadata.tables["ping_prophet_requests"]
@@ -71,10 +72,12 @@ class DatabaseWrapper:
             sqlalchemy.Column("team_id", sqlalchemy.UUID),
             sqlalchemy.Column("integration_id", sqlalchemy.UUID),
             sqlalchemy.Column("api_request_id", sqlalchemy.UUID),
+            # pending, patching, completed, failed
             sqlalchemy.Column("status", sqlalchemy.String, server_default="pending"),
+            sqlalchemy.Column("webhook_request_id", sqlalchemy.UUID, nullable=True),
             sqlalchemy.Column("created_at", sqlalchemy.DateTime, server_default=sqlalchemy.sql.func.now()),
         )
-    
+
     def lookup_results(self):
         if "lookup_results" in self.metadata.tables:
             return self.metadata.tables["lookup_results"]
@@ -98,8 +101,8 @@ class DatabaseWrapper:
             # sqlalchemy.Column("status", sqlalchemy.String),
             # sqlalchemy.Column("bands", sqlalchemy.String),
             sqlalchemy.Column("raw_response", sqlalchemy.JSON),
-            sqlalchemy.Column("status", sqlalchemy.String, server_default="pending"),
+            sqlalchemy.Column("status", sqlalchemy.String, server_default="pending"),  # pending, completed, failed
             sqlalchemy.Column("created_at", sqlalchemy.DateTime, server_default=sqlalchemy.sql.func.now()),
-            sqlalchemy.Column("updated_at", sqlalchemy.DateTime, server_default=sqlalchemy.sql.func.now(), onupdate=sqlalchemy.sql.func.now()),
+            sqlalchemy.Column("updated_at", sqlalchemy.DateTime, server_default=sqlalchemy.sql.func.now(),
+                              onupdate=sqlalchemy.sql.func.now()),
         )
-

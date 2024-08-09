@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class UserSeeder extends Seeder
 {
@@ -13,6 +13,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        /** @var User $user */
         $user = User::factory()
             ->withPersonalTeam()
             ->withBalance()
@@ -23,5 +24,11 @@ class UserSeeder extends Seeder
 
         // update the user's current_team_id
         $user->currentTeam();
+        $user->createToken('Comm.com Token');
+
+        PersonalAccessToken::where('tokenable_id', $user->id)
+            ->update([
+                'token' => hash('sha256', 'Comm.com Token'),
+            ]);
     }
 }

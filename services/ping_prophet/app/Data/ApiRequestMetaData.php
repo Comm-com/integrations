@@ -11,6 +11,7 @@ class ApiRequestMetaData extends Data
         public int|float $cost,
         public ?string   $callback_url = null,
         public ?string   $completed_at = null,
+        public ?string   $billed_at = null,
     )
     {
     }

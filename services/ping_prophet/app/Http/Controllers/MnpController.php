@@ -20,7 +20,7 @@ class MnpController extends Controller
         ];
     }
 
-    public function store(Request $request, LookupService $mnpService)
+    public function store(Request $request)
     {
         $validated = $request->validate([
             'data' => 'required|array',
@@ -30,13 +30,13 @@ class MnpController extends Controller
             'callback_url' => 'nullable|string',
         ]);
 
-        $balanceService = app(BalanceService::class, ['team_id' => $request->user()->currentTeam->id]);
-        $balance = $balanceService->total();
-        $cost = $mnpService->calculateCost(count($validated['data']), LookupTypeEnum::mnp->name);
-
-        if ($balance < $cost) {
-            return response()->json(['status' => 'error', 'message' => 'Insufficient balance'], 402);
-        }
+//        $balanceService = app(BalanceService::class, ['team_id' => $request->user()->currentTeam->id]);
+//        $balance = $balanceService->total();
+        $cost = app(LookupService::class)->calculateCost(count($validated['data']), LookupTypeEnum::mnp->name);
+//
+//        if ($balance < $cost) {
+//            return response()->json(['status' => 'error', 'message' => 'Insufficient balance'], 402);
+//        }
 
         $meta = ApiRequestMetaData::from([
             'data' => $validated['data'],
@@ -50,14 +50,14 @@ class MnpController extends Controller
             'meta' => $meta->toArray(),
         ]);
 
-        $balanceService->subtractBalance(
-            amount: $cost,
-            meta: [
-                'api_request_id' => $apiRequest->id,
-                'request_type' => $apiRequest->request_type,
-                'total_numbers' => count($validated['data']),
-            ],
-        );
+//        $balanceService->subtractBalance(
+//            amount: $cost,
+//            meta: [
+//                'api_request_id' => $apiRequest->id,
+//                'request_type' => $apiRequest->request_type,
+//                'total_numbers' => count($validated['data']),
+//            ],
+//        );
 
         MnpDispatchJob::dispatch($apiRequest, $validated['data']);
 
