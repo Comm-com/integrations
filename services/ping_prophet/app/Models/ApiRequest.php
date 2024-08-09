@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace app\Models;
 
-use App\Data\ApiRequestMetaData;
+use app\Data\ApiRequestMetaData;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 
@@ -36,7 +36,7 @@ class ApiRequest extends Model
 
     public function setMetaData(ApiRequestMetaData $metaData, bool $save = true): self
     {
-        $meta = $this->meta;
+        $meta = $this->meta ?? [];
         $this->meta = array_merge($meta, $metaData->toArray());
 
         if ($save) {

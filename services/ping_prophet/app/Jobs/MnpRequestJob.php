@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Jobs;
+namespace app\Jobs;
 
-use App\Data\MnpRequestData;
-use App\Services\Providers\XConnectProvider;
+use app\Data\MnpRequestData;
+use app\Services\Providers\XConnectProvider;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;

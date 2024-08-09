@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace app\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Balance;
+use app\Http\Controllers\Controller;
+use app\Models\Balance;
 use Illuminate\Http\Request;
 
 class BalanceController extends Controller

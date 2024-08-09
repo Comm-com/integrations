@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace app\Http\Controllers;
 
-use App\Enums\XConnectReasonCodeEnum;
-use App\Models\MobileNetwork;
+use app\Enums\XConnectReasonCodeEnum;
 use Illuminate\Http\Request;
 
 class FakeServiceController extends Controller

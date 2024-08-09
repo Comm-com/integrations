@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Integration;
 
-use App\Models\User;
-use App\Services\BalanceService;
+use app\Models\User;
+use app\Services\BalanceService;
 use Database\Factories\UserFactory;
 use Tests\TestCase;
 

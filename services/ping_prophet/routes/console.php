@@ -1,6 +1,6 @@
 <?php
 
-use App\Console\Commands\LookupFinisher;
+use app\Console\Commands\LookupFinisher;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schedule;

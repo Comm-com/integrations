@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Services\Providers;
+namespace app\Services\Providers;
 
-use App\Data\LookupResultData;
-use App\Data\MnpRequestData;
-use App\Services\NetworkService;
+use app\Data\MnpRequestData;
 
 abstract class BaseProvider
 {
-    public function __construct(public NetworkService $networkService) {}
+    public function __construct() {}
 
     public function lookup(MnpRequestData $requestData): void
     {

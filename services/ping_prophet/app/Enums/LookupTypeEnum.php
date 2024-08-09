@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Enums;
+namespace app\Enums;
 
 enum LookupTypeEnum
 {

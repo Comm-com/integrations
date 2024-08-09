@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Services;
+namespace app\Services;
 
-use App\Data\ApiRequestMetaData;
-use App\Data\MobileNetworkData;
-use App\Enums\ApiRequestStatusEnum;
-use App\Enums\EventTypeEnum;
-use App\Enums\LookupResultStatusEnum;
-use App\Enums\LookupTypeEnum;
-use App\Jobs\CallbackJob;
-use App\Models\ApiRequest;
-use App\Models\LookupResult;
+use app\Data\ApiRequestMetaData;
+use app\Data\MobileNetworkData;
+use app\Enums\ApiRequestStatusEnum;
+use app\Enums\EventTypeEnum;
+use app\Enums\LookupResultStatusEnum;
+use app\Enums\LookupTypeEnum;
+use app\Models\ApiRequest;
+use app\Models\LookupResult;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 

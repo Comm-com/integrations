@@ -1,8 +1,8 @@
 <?php
 
-namespace Database\Seeders;
+namespace database\seeders;
 
-use App\Models\Team;
+use app\Models\Team;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;

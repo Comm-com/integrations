@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Data;
+namespace app\Data;
 
-use App\Enums\LookupResultStatusEnum;
+use app\Enums\LookupResultStatusEnum;
 use Spatie\LaravelData\Attributes\Validation\Uuid;
 use Spatie\LaravelData\Data;
 

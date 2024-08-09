@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Services\Providers;
+namespace app\Services\Providers;
 
-use App\Data\LookupResultData;
-use App\Data\MnpRequestData;
-use App\Enums\LookupResultStatusEnum;
-use App\Enums\LookupTypeEnum;
-use App\Enums\XConnectReasonCodeEnum;
-use App\Models\LookupResult;
-use App\Services\LookupService;
+use app\Data\LookupResultData;
+use app\Data\MnpRequestData;
+use app\Enums\LookupResultStatusEnum;
+use app\Enums\LookupTypeEnum;
+use app\Enums\XConnectReasonCodeEnum;
+use app\Models\LookupResult;
+use app\Services\LookupService;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;

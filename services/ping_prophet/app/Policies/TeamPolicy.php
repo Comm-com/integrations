@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Policies;
+namespace app\Policies;
 
-use App\Models\Team;
-use App\Models\User;
+use app\Models\Team;
+use app\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TeamPolicy

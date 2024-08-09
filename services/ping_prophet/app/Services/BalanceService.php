@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services;
+namespace app\Services;
 
-use App\Models\Balance;
+use app\Models\Balance;
 
 class BalanceService
 {

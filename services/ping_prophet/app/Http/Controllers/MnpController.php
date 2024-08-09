@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace app\Http\Controllers;
 
-use App\Data\ApiRequestMetaData;
-use App\Enums\ApiRequestStatusEnum;
-use App\Enums\LookupTypeEnum;
-use App\Jobs\MnpDispatchJob;
-use App\Models\ApiRequest;
-use App\Services\BalanceService;
-use App\Services\LookupService;
+use app\Data\ApiRequestMetaData;
+use app\Enums\ApiRequestStatusEnum;
+use app\Enums\LookupTypeEnum;
+use app\Jobs\MnpDispatchJob;
+use app\Models\ApiRequest;
+use app\Services\BalanceService;
+use app\Services\LookupService;
 use Illuminate\Http\Request;
 
 class MnpController extends Controller

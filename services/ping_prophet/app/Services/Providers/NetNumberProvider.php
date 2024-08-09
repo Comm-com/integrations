@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Services\Providers;
+namespace app\Services\Providers;
 
-use App\Domain\Audience\Enrichments\Data\LookupResultData;
-use App\Domain\Audience\Enrichments\Enums\LookupProviderEnum;
-use App\Domain\Audience\Enrichments\Enums\LookupResultStatusEnum;
-use App\Domain\Audience\Enrichments\Enums\LookupTypeEnum;
-use App\Domain\Audience\Enrichments\Enums\NetNumberResponseCodeEnum;
+use app\Domain\Audience\Enrichments\Data\LookupResultData;
+use app\Domain\Audience\Enrichments\Enums\LookupProviderEnum;
+use app\Domain\Audience\Enrichments\Enums\LookupResultStatusEnum;
+use app\Domain\Audience\Enrichments\Enums\LookupTypeEnum;
+use app\Domain\Audience\Enrichments\Enums\NetNumberResponseCodeEnum;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;

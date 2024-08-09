@@ -1,10 +1,10 @@
 <?php
 
-namespace Database\Factories;
+namespace database\factories;
 
-use App\Models\Team;
-use App\Models\User;
-use App\Services\BalanceService;
+use app\Models\Team;
+use app\Models\User;
+use app\Services\BalanceService;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;

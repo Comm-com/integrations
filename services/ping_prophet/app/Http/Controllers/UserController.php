@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace app\Http\Controllers;
 
-use App\Services\BalanceService;
+use app\Services\BalanceService;
 
 class UserController
 {
