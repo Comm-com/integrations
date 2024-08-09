@@ -19,7 +19,11 @@ return new class extends Migration {
             $table->decimal('admin_price', 18, 15)->nullable();
             $table->string('lookup_type')->nullable();
             $table->boolean('verified')->nullable();
-            $table->unsignedInteger('network_id')->nullable();
+            $table->string('brand_name')->nullable();
+            $table->string('mcc', 3)->nullable();
+            $table->string('mnc', 3)->nullable();
+            $table->string('country_code', 2)->nullable();
+            $table->string('reason_code')->nullable();
             $table->jsonb('raw_response')->nullable();
             $table->timestamps();
         });

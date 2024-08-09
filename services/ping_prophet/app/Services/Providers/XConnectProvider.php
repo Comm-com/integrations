@@ -72,13 +72,17 @@ class XConnectProvider extends BaseProvider
             'admin_price' => LookupService::COST_MNP_PER_LOOKUP,
             'lookup_type' => LookupTypeEnum::mnp->name,
             'verified' => $resultData->verified,
-            'network_id' => $resultData->network_id,
+            'mcc' => $resultData->mcc,
+            'mnc' => $resultData->mnc,
+            'country_code' => $resultData->country_code,
+            'reason_code' => $resultData->status->name,
             'raw_response' => $response,
         ]);
     }
 
     private function parseResponse(array $response): ?LookupResultData
     {
+        // response example from docs
         $responseCode = XConnectReasonCodeEnum::tryFrom($response['rc'] ?? null);
 
         if ($responseCode === null) {
@@ -89,25 +93,15 @@ class XConnectProvider extends BaseProvider
                 : LookupResultStatusEnum::bad_response_code;
         }
 
-        $verified = false;
-        $networkId = null;
-        $mcc = $response['mcc'] ?? null;
-        $mnc = $response['mnc'] ?? null;
         $nt = mb_strtolower($response['nt'] ?? 'unknown');
-
-        if ($nt === 'wireless' && !empty($mcc) && !empty($mnc)) {
-            $verified = true;
-            $networkId = $this->networkService->guessNetworkId($mcc, $mnc);
-
-            if (empty($networkId)) {
-                $networkId = $this->networkService->createNewNetwork($mcc, $mnc);
-            }
-        }
 
         return new LookupResultData(
             status: $status,
-            verified: $verified,
-            network_id: $networkId,
+            verified: $nt === 'wireless' && !empty($response['mcc']) && !empty($response['mnc']),
+            country_code: $response['cc'] ?? null,
+            carrier_name: $response['cn'] ?? null,
+            mcc: $response['mcc'] ?? null,
+            mnc: $response['mnc'] ?? null,
         );
     }
 

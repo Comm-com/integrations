@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories;
+namespace database\factories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class TeamFactory extends Factory
 {
+    protected $model = \App\Models\Team::class;
+
     /**
      * Define the model's default state.
      *

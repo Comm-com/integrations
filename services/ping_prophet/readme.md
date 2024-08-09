@@ -1,3 +1,3 @@
-to start NEED TO RUN BOTH COMMANDS IN SEPARATE TERMINALS
-1. `php artisan serve`
-2. `npm run dev`
+# Ping Prophet
+
+ `npm run dev` is running in the background if the project was setup with bash script `/dev/start_dev.sh`

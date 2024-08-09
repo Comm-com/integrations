@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\BalanceService;
+use App\Models\User;
 
 class UserController
 {
     public function show()
     {
+        /** @var User $user */
+        $user = auth()->user();
         return [
-            'name' => auth()->user()->name,
-            'email' => auth()->user()->email,
-            'balance' => app(BalanceService::class, ['team_id' => auth()->user()->currentTeam->id])->total(),
-            'current_team_id' => auth()->user()->currentTeam->id,
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'current_team_id' =>$user->currentTeam->id,
         ];
     }
 }

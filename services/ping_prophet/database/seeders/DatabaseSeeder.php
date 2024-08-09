@@ -1,8 +1,8 @@
 <?php
 
-namespace Database\Seeders;
+namespace database\seeders;
 
-use App\Models\User;
+use App\Models\Team;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,8 +16,14 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         if (!app()->environment('local')) {
-            echo "Environment is not local, skipping seeding\n";
-            exit;
+            if (Team::count()) {
+                echo "Environment is not local, skipping seeding\n";
+                exit;
+            }
+        }
+
+        if (!app()->environment('testing')) {
+            app(\Faker\Generator::class)->seed(2);
         }
 
         Artisan::call('migrate:fresh');

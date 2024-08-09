@@ -20,7 +20,11 @@ class LookupResult extends Model
         'admin_price',
         'lookup_type',
         'verified',
-        'network_id',
+        'brand_name',
+        'mcc',
+        'mnc',
+        'country_code',
+        'reason_code',
         'raw_response',
     ];
 
@@ -31,10 +35,5 @@ class LookupResult extends Model
     public function apiRequest()
     {
         return $this->belongsTo(ApiRequest::class);
-    }
-
-    public function network()
-    {
-        return $this->belongsTo(MobileNetwork::class);
     }
 }
