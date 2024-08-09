@@ -21,13 +21,14 @@ class BaseIntegration:
 
     async def store_team_token(self, data):
         query = """
-        insert into team_access_tokens (id, team_id, integration_id, access_token) 
-        values (:id, :team_id, :integration_id, :access_token);
+        insert into team_access_tokens (id, team_id, integration_id, integration_hash, access_token) 
+        values (:id, :team_id, :integration_id, integration_hash: :access_token);
         """
         values = {
             "id": str(uuid.uuid4()),
             "team_id": data['team_id'],
             "integration_id": data['integration_id'],
+            "integration_hash": data['integration_hash'],
             "access_token": data['data']['access_token'],
         }
         await self.db.execute(query, values)
