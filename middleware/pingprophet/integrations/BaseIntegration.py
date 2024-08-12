@@ -1,5 +1,6 @@
 import uuid
 
+
 class BaseIntegration:
     def __init__(self, db, logger, background_tasks):
         self.db = db
@@ -22,7 +23,7 @@ class BaseIntegration:
     async def store_team_token(self, data):
         query = """
         insert into team_access_tokens (id, team_id, integration_id, integration_hash, access_token) 
-        values (:id, :team_id, :integration_id, integration_hash: :access_token);
+        values (:id, :team_id, :integration_id, :integration_hash: :access_token);
         """
         values = {
             "id": str(uuid.uuid4()),
@@ -36,7 +37,10 @@ class BaseIntegration:
         return {"ok": True, "message": "Token stored"}
 
     async def destroy_team_token(self, data):
-        query = "update team_access_tokens set deleted_at = now() where team_id = :team_id and integration_id = :integration_id;"
+        query = """
+        update team_access_tokens set deleted_at = now() 
+        where team_id = :team_id and integration_id = :integration_id;
+        """
         values = {
             "team_id": data['team_id'],
             "integration_id": data['integration_id'],
@@ -44,7 +48,10 @@ class BaseIntegration:
         await self.db.execute(query, values)
 
     async def get_team_token(self, data):
-        query = "select access_token from team_access_tokens where team_id = :team_id and integration_id = :integration_id and deleted_at is null;"
+        query = """
+        select access_token from team_access_tokens 
+        where team_id = :team_id and integration_id = :integration_id and deleted_at is null;
+        """
         values = {
             "team_id": data['team_id'],
             "integration_id": data['integration_id'],
