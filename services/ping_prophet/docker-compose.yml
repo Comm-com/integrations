@@ -60,6 +60,35 @@ services:
             retries: 3
             timeout: 5s
 
+    ping-prophet-cron:
+        image: 'slnww/base_laravel:latest'
+        container_name: ping-prophet-cron
+        volumes:
+            - '.:/var/www/html'
+        environment:
+            XDEBUG_MODE: 'off'
+            PHP_FPM_POOL_NAME: 'cron'
+            SSL_MODE: 'off'
+        networks:
+            - sail
+        entrypoint: php
+        command: [ "/var/www/html/artisan", "schedule:work" ]
+        depends_on:
+            -   ping-prophet-redis
+
+    ping-prophet-queue:
+        container_name: ping-prophet-queue
+        environment:
+            PHP_FPM_POOL_NAME: 'queue'
+        networks:
+            - sail
+        extends:
+            service: ping-prophet-cron
+
+        command: [ "/var/www/html/artisan", "horizon" ]
+        depends_on:
+            -   ping-prophet-redis
+
 # doesn't work
 #    ping-prophet-vite:
 #        container_name: ping-prophet-vite

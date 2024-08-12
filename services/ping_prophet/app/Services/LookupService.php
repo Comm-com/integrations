@@ -44,9 +44,9 @@ class LookupService
     public function completeRequest(ApiRequest $apiRequest): bool
     {
         $results = LookupResult::where('api_request_id', $apiRequest->id)->get()->count();
-        $metaData = ApiRequestMetaData::from($apiRequest->meta);
+        $metaData = $apiRequest->getMetaData();
 
-        if ($results === count($metaData->data)) {
+        if ($results > 0 && $results === count($metaData->data)) {
             Log::info('Lookup completed', ['api_request_id' => $apiRequest->id]);
 
             $apiRequest->status = ApiRequestStatusEnum::completed->name;
@@ -108,7 +108,6 @@ class LookupService
         $metaData = $apiRequest->getMetaData();
         $totalSuccess = LookupResult::where('api_request_id', $apiRequest->id)
             ->where('status', '!=', LookupResultStatusEnum::success->value)
-            ->get()
             ->count();
 
         if ($totalSuccess === 0) {
