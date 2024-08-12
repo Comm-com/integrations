@@ -6,6 +6,8 @@ from logging.handlers import RotatingFileHandler
 from database import DatabaseWrapper
 import re
 import logging
+import sys
+import traceback
 
 # from integrations.HLRPingProphet import HLRPingProphet # for testing without dynamic imports
 
@@ -16,9 +18,15 @@ main_app_lifespan = app.router.lifespan_context
 db = DatabaseWrapper()
 logger = logging.getLogger("app")
 logger.setLevel(logging.DEBUG)
-handler = RotatingFileHandler("logs/app.log", maxBytes=1000000, backupCount=5)
-handler.setFormatter(logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s"))
-logger.addHandler(handler)
+
+fileHandler = RotatingFileHandler("logs/app.log", maxBytes=1000000, backupCount=5)
+fileHandler.setFormatter(logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s"))
+logger.addHandler(fileHandler)
+
+stdoutHandler = logging.StreamHandler(sys.stdout)
+stdoutHandler.setFormatter(logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s"))
+logger.addHandler(stdoutHandler)
+
 logger.debug("App started")
 
 
@@ -54,6 +62,7 @@ async def events_new(request: Request, background_tasks: BackgroundTasks):
     except ImportError:
         return {"ok": False, "message": "Integration module not found"}
     except Exception as e:
+        logger.error(traceback.format_exc())
         return {"ok": False, "message": str(e)}
 
     try:
@@ -61,6 +70,7 @@ async def events_new(request: Request, background_tasks: BackgroundTasks):
     except KeyError as e:
         return {"ok": False, "message": "Missing: " + str(e)}
     except Exception as e:
+        logger.error(traceback.format_exc())
         return {"ok": False, "message": str(e)}
 
 
@@ -79,6 +89,7 @@ async def callback_new(request: Request, integration_name: str, background_tasks
     except ImportError:
         return {"ok": False, "message": "Integration module not found"}
     except Exception as e:
+        logger.error(traceback.format_exc())
         return {"ok": False, "message": str(e)}
 
     try:
@@ -86,6 +97,7 @@ async def callback_new(request: Request, integration_name: str, background_tasks
     except KeyError as e:
         return {"ok": False, "message": "Missing: " + str(e)}
     except Exception as e:
+        logger.error(traceback.format_exc())
         return {"ok": False, "message": str(e)}
 
 

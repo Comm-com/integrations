@@ -1,6 +1,6 @@
 <?php
 
-namespace database\seeders;
+namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
 
         PersonalAccessToken::where('tokenable_id', $user->id)
             ->update([
-                'token' => hash('sha256', 'Comm.com Token'),
+                'token' => hash('sha256', 'comm.com_demo_token'),
             ]);
     }
 }

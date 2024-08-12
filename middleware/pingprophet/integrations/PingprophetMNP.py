@@ -7,7 +7,7 @@ import uuid
 from integrations.BaseIntegration import BaseIntegration
 
 
-class HLRPingProphet(BaseIntegration):
+class PingprophetMNP(BaseIntegration):
     def __init__(self, db, logger, background_tasks):
         super().__init__(db, logger, background_tasks)
 
@@ -74,7 +74,7 @@ class HLRPingProphet(BaseIntegration):
 
             query_data = {
                 "data": contacts,
-                "callback_url": f"{os.getenv('CALLBACK_URL')}/HLRPingProphet"
+                "callback_url": f"{os.getenv('CALLBACK_URL')}/PingprophetMNP"
             }
             async with session.post(f"{self.url}/api/v1/mnp", headers=headers, json=query_data) as resp:
                 res = await resp.json()
@@ -89,14 +89,13 @@ class HLRPingProphet(BaseIntegration):
                     }
 
                 query = """
-                    insert into ping_prophet_requests (id, team_id, integration_id, api_request_id, webhook_request_id) 
-                    values (:id, :team_id, :integration_id, :api_request_id, :webhook_request_id);
+                    insert into ping_prophet_requests (id, team_id, integration_id, webhook_request_id) 
+                    values (:id, :team_id, :integration_id, :webhook_request_id);
                 """
                 values = {
-                    "id": str(uuid.uuid4()),
+                    "id": res['data']['request_id'],
                     "team_id": data['team_id'],
                     "integration_id": data['integration_id'],
-                    "api_request_id": res['data']['request_id'],
                     "webhook_request_id": data['webhook_request_id'],
                 }
                 await self.db.execute(query, values)
@@ -116,16 +115,16 @@ class HLRPingProphet(BaseIntegration):
         # if self.bearer_token is None:
         # return { "ok": False, "message": "missing required field: api_key" }
 
-        if event_type == "integration/test":
+        if event_type == "integration_test":
             return await self.test_api_key()
 
-        if event_type == "integration/activated":
+        if event_type == "integration_activated":
             return await self.store_team_token(data)
 
-        if event_type == "integration/deactivated":
+        if event_type == "integration_deactivated":
             return await self.integration_deactivate(data)
 
-        if event_type in ["contact/created", "sms/created"]:
+        if event_type in ["contact_created", "sms_created"]:
             return await self.mnp_request(data)
 
         # todo: handle other event types
@@ -136,7 +135,7 @@ class HLRPingProphet(BaseIntegration):
         self.logger.debug("Storing mnp response: %s", data)
 
         request_id = data['request_id']
-        query = "select * from ping_prophet_requests where api_request_id = :request_id and status = 'pending';"
+        query = "select * from ping_prophet_requests where id = :request_id and status = 'pending';"
         values = {
             "request_id": request_id,
         }
@@ -147,19 +146,24 @@ class HLRPingProphet(BaseIntegration):
             return {"ok": False, "message": "request not found"}
 
         items = data['data']
+
         query = """
-        insert into lookup_results (id, api_request_id, foreign_id, phone_normalized, network_id, verified, raw_response) 
-        values (:id, :api_request_id, :foreign_id, :phone_normalized, :network_id, :verified, :raw_response);
+        insert into ping_prophet_mnp_results (id, pp_request_id, foreign_id, phone_normalized, verified, mcc, mnc, brand_name, country_code, reason_code, raw_response) 
+        values (:id, :pp_request_id, :foreign_id, :phone_normalized, :verified, :mcc, :mnc, :brand_name, :country_code, :reason_code, :raw_response);
         """
         values = []
         for item in items:
             values.append({
                 "id": str(uuid.uuid4()),
-                "api_request_id": pp_request['api_request_id'],
+                "pp_request_id": pp_request['id'],
                 "foreign_id": item['foreign_id'],
                 "phone_normalized": item['number'],
-                "network_id": item['network_id'],
                 "verified": item['verified'],
+                "mcc": item['mcc'],
+                "mnc": item['mnc'],
+                "brand_name": item['brand_name'],
+                "country_code": item['country_code'],
+                "reason_code": item['reason_code'],
                 "raw_response": json.dumps(item['raw_response']),
             })
 
@@ -171,7 +175,7 @@ class HLRPingProphet(BaseIntegration):
         if len(values) > 0:
             await self.db.execute_many(query, values)
 
-        query = "update ping_prophet_requests set status = 'patching' where api_request_id = :request_id;"
+        query = "update ping_prophet_requests set status = 'patching' where id = :request_id;"
         values = {
             "request_id": request_id,
         }
@@ -182,34 +186,38 @@ class HLRPingProphet(BaseIntegration):
         return {"ok": True, "message": "mnp response stored"}
 
     async def patch_contacts(self, pp_request):
-        self.logger.debug("Patching contacts, request ID: %s", pp_request['api_request_id'])
+        self.logger.debug("Patching contacts, request ID: %s", pp_request['id'])
 
         team_access_token = await self.get_team_token(pp_request)
 
         if team_access_token is None:
-            self.logger.debug("No api key: %s", pp_request['api_request_id'])
+            self.logger.debug("No api key: %s", pp_request['id'])
 
-            query = "update ping_prophet_requests set status = 'failed' where api_request_id = :request_id;"
+            query = "update ping_prophet_requests set status = 'failed' where id = :id;"
             values = {
-                "request_id": pp_request['api_request_id'],
+                "id": pp_request['id'],
             }
             await self.db.execute(query, values)
             return {"ok": False, "message": "no api key"}
 
         while True:
             query = """
-                select * from lookup_results 
-                where api_request_id = :request_id and status = 'pending'
+                select * from ping_prophet_mnp_results 
+                where pp_request_id = :request_id and status = 'pending'
                 limit 100;
             """
             values = {
-                "request_id": pp_request['api_request_id'],
+                "request_id": pp_request['id'],
             }
             results = await self.db.fetch_all(query, values)
 
             if len(results) == 0:
-                self.logger.debug("No more contacts to patch: %s", pp_request['api_request_id'])
-                query = "update ping_prophet_requests set status = 'completed' where api_request_id = :request_id;"
+                self.logger.debug("No more contacts to patch: %s", pp_request['id'])
+                query = "update ping_prophet_requests set status = 'completed' where id = :request_id;"
+                values = {
+                    "request_id": pp_request['id'],
+                }
+                await self.db.execute(query, values)
                 break
 
             ids = [result['id'] for result in results]
@@ -218,15 +226,19 @@ class HLRPingProphet(BaseIntegration):
             for result in results:
                 ids.append(result['id'])
 
-                contactData = {
+                contact_data = {
                     "contact_id": str(result['foreign_id']),
                     "phone_normalized": str(result['phone_normalized']),
-                    "network_id": result['network_id'],
                     "phone_is_good": result['verified'],
                     "phone_is_good_reason": 1 if result['verified'] == 1 else 2,
+                    "mcc": result['mcc'],
+                    "mnc": result['mnc'],
+                    "brand_name": result['brand_name'],
+                    "country": result['country_code'],
+                    "reason_code": result['reason_code'],
                     "raw_response": result['raw_response'],
                 }
-                contacts.append(contactData)
+                contacts.append(contact_data)
 
             req = {
                 "team_id": str(pp_request['team_id']),
@@ -243,14 +255,14 @@ class HLRPingProphet(BaseIntegration):
             placeholders = ', '.join(':id' + str(i) for i in range(len(ids)))
 
             if response.status_code != 200:
-                query = "update lookup_results set status = 'failed' where id in ({placeholders});"
+                query = "update ping_prophet_mnp_results set status = 'failed' where id in ({placeholders});"
                 values = {
                     f"id{i}": id for i, id in enumerate(ids)
                 }
                 await self.db.execute(query, values)
                 continue
 
-            query = f"update lookup_results set status = 'completed' where id in ({placeholders});"
+            query = f"update ping_prophet_mnp_results set status = 'completed' where id in ({placeholders});"
             values = {
                 f"id{i}": id for i, id in enumerate(ids)
             }
@@ -258,12 +270,12 @@ class HLRPingProphet(BaseIntegration):
 
             await asyncio.sleep(1)
 
-        query = "update ping_prophet_requests set status = 'completed' where api_request_id = :request_id;"
+        query = "update ping_prophet_requests set status = 'completed' where id = :request_id;"
         values = {
-            "request_id": pp_request['api_request_id'],
+            "request_id": pp_request['id'],
         }
         await self.db.execute(query, values)
-        self.logger.debug("Contacts patched: %s", pp_request['api_request_id'])
+        self.logger.debug("Contacts patched: %s", pp_request['id'])
 
         return {"ok": True, "message": "contacts patched"}
 
@@ -271,7 +283,7 @@ class HLRPingProphet(BaseIntegration):
         self.logger.debug("Billing charge: %s", data)
 
         request_id = data['request_id']
-        query = "select * from ping_prophet_requests where api_request_id = :request_id;"
+        query = "select * from ping_prophet_requests where id = :request_id;"
         values = {
             "request_id": request_id,
         }
@@ -284,11 +296,11 @@ class HLRPingProphet(BaseIntegration):
         team_access_token = await self.get_team_token(pp_request)
 
         if team_access_token is None:
-            self.logger.debug("No api key: %s", pp_request['api_request_id'])
+            self.logger.debug("No api key: %s", pp_request['id'])
 
-            query = "update ping_prophet_requests set status = 'failed' where api_request_id = :request_id;"
+            query = "update ping_prophet_requests set status = 'failed' where id = :request_id;"
             values = {
-                "request_id": pp_request['api_request_id'],
+                "request_id": pp_request['id'],
             }
             await self.db.execute(query, values)
             return {"ok": False, "message": "no api key"}
@@ -323,11 +335,11 @@ class HLRPingProphet(BaseIntegration):
     async def callback(self, data):
         event_type = data['event_type']
 
-        if event_type == "mnp/response":
+        if event_type == "mnp_response":
             self.background_tasks.add_task(self.store_mnp_response, data)
             return {"ok": True, "message": "callback received"}
 
-        if event_type == "billing/charge":
+        if event_type == "billing_charge":
             return await self.billing_charge(data)
 
         return {"ok": False, "message": "unknown event type"}

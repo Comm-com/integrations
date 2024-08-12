@@ -39,7 +39,7 @@ class DatabaseWrapper:
         tables = [
             self.team_access_tokens(),
             self.ping_prophet_requests(),
-            self.lookup_results(),
+            self.ping_prophet_mnp_results(),
         ]
         for table in tables:
             schema = sqlalchemy.schema.CreateTable(table, if_not_exists=True)
@@ -72,35 +72,36 @@ class DatabaseWrapper:
             sqlalchemy.Column("id", sqlalchemy.UUID, primary_key=True),
             sqlalchemy.Column("team_id", sqlalchemy.UUID),
             sqlalchemy.Column("integration_id", sqlalchemy.UUID),
-            sqlalchemy.Column("api_request_id", sqlalchemy.UUID),
             # pending, patching, completed, failed
             sqlalchemy.Column("status", sqlalchemy.String, server_default="pending"),
             sqlalchemy.Column("webhook_request_id", sqlalchemy.UUID, nullable=True),
             sqlalchemy.Column("created_at", sqlalchemy.DateTime, server_default=sqlalchemy.sql.func.now()),
         )
 
-    def lookup_results(self):
-        if "lookup_results" in self.metadata.tables:
-            return self.metadata.tables["lookup_results"]
+    def ping_prophet_mnp_results(self):
+        if "ping_prophet_mnp_results" in self.metadata.tables:
+            return self.metadata.tables["ping_prophet_mnp_results"]
 
+            # $table->boolean('verified')->nullable();
+            # $table->string('brand_name')->nullable();
+            # $table->string('mcc', 3)->nullable();
+            # $table->string('mnc', 3)->nullable();
+            # $table->string('country_code', 2)->nullable();
+            # $table->string('reason_code')->nullable();
         return sqlalchemy.Table(
-            "lookup_results",
+            "ping_prophet_mnp_results",
             self.metadata,
             sqlalchemy.Column("id", sqlalchemy.UUID, primary_key=True),
-            sqlalchemy.Column("api_request_id", sqlalchemy.UUID),
+            sqlalchemy.Column("pp_request_id", sqlalchemy.UUID),
             sqlalchemy.Column("foreign_id", sqlalchemy.UUID),
             sqlalchemy.Column("phone_normalized", sqlalchemy.BigInteger),
             sqlalchemy.Column("network_id", sqlalchemy.BigInteger, nullable=True),
             sqlalchemy.Column("verified", sqlalchemy.SmallInteger),
-            # sqlalchemy.Column("mcc", sqlalchemy.SmallInteger),
-            # sqlalchemy.Column("mnc", sqlalchemy.SmallInteger),
-            # sqlalchemy.Column("type, sqlalchemy.String, nullable=True),
-            # sqlalchemy.Column("country_name", sqlalchemy.String, nullable=True),
-            # sqlalchemy.Column("country_code", sqlalchemy.String, nullable=True),
-            # sqlalchemy.Column("brand", sqlalchemy.String, nullable=True),
-            # sqlalchemy.Column("operator", sqlalchemy.String, nullable=True),
-            # sqlalchemy.Column("status", sqlalchemy.String),
-            # sqlalchemy.Column("bands", sqlalchemy.String),
+            sqlalchemy.Column("mcc", sqlalchemy.String(3)),
+            sqlalchemy.Column("mnc", sqlalchemy.String(3)),
+            sqlalchemy.Column("country_code", sqlalchemy.String(2), nullable=True),
+            sqlalchemy.Column("brand_name", sqlalchemy.String, nullable=True),
+            sqlalchemy.Column("reason_code", sqlalchemy.String, nullable=True),
             sqlalchemy.Column("raw_response", sqlalchemy.JSON),
             sqlalchemy.Column("status", sqlalchemy.String, server_default="pending"),  # pending, completed, failed
             sqlalchemy.Column("created_at", sqlalchemy.DateTime, server_default=sqlalchemy.sql.func.now()),

@@ -29,7 +29,7 @@ class ApiRequest extends Model
     public function getMetaData(): ApiRequestMetaData
     {
         return new ApiRequestMetaData(
-            data: $this->meta['numbers'] ?? [],
+            data: $this->meta['data'] ?? [],
             cost: $this->meta['cost'] ?? 0,
             callback_url: $this->meta['callback_url'] ?? null,
             completed_at: $this->meta['completed_at'] ?? null,
