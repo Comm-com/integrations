@@ -58,11 +58,14 @@ class SMSEdgeSMSRoutes(BaseIntegration):
             "username": endpoint_username,
             "password": endpoint_password,
         })
+
+        clicks_webhook_url = list(filter(lambda x: x['name'] == 'clicks_webhook_url', data['required_fields']))
         sms_route = await self.create_sms_route({
             "name": "SMSEdge SMS Routes",
             "description": "Auto-created from SMSEdge integration",
             "company_id": company_id,
             "connection_id": smpp['id'],
+            "clicks_webhook_url": clicks_webhook_url[0]['value'] if clicks_webhook_url is not None else None,
         })
 
         # create hub endpoint
