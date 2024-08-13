@@ -101,6 +101,11 @@ async def callback_new(request: Request, integration_name: str, background_tasks
         return {"ok": False, "message": str(e)}
 
 
+@app.get("/health")
+async def health_check():
+    return {"ok": True, "message": "Service is healthy"}
+
+
 if __name__ == "__main__":
     import uvicorn
 
