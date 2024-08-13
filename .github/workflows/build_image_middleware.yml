@@ -1,0 +1,30 @@
+name: Docker Build and Push Bolna
+
+on:
+  push:
+    branches: [ development, production ]
+    paths:
+      - 'middleware/pingprophet/**'
+
+jobs:
+  build:
+    runs-on: [ 'tools', 'builder' ]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checkout private action
+        uses: actions/checkout@v4
+        with:
+          repository: 'msgr2/workflows'
+          ref: 'main'
+          path: workflows
+          token: ${{ secrets.WRITE_ACCESS_TOKEN }}
+
+      - uses: ./workflows/docker-build
+        with:
+          dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
+          dockerhub_password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          image_name: ${{ github.ref_name == 'production' && 'slnww/middleware:latest' || 'slnww/middleware_dev:latest' }}
+          dockerfile: ./middleware/pingprophet/Dockerfile
+          context: .
+          update_production: ${{ github.ref_name == 'production' }}
+          update_staging: ${{ github.ref_name == 'development' }}
