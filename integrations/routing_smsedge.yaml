@@ -10,11 +10,14 @@ tags: ['SMS', 'Routes']
 type: sms_routes
 scopes:
   - method: post
-    endpoint: sms/routes/create
-    reason: Updates contacts is valid reason and is valid status
+    endpoint: audience/companies
+    reason: Create a new company for the SMS routes
   - method: post
-    endpoint: billing/charge
-    reason: Billing for SMS sent requests
+    endpoint: sms/routing/routes
+    reason: Create a new route for the SMS routes
+  - method: post
+    endpoint: sms/routing/routes/smpp-connections
+    reason: Create a new SMPP connection for the SMS routes
 
 required_fields:
   - type: select
@@ -27,6 +30,7 @@ required_fields:
       - name: OTP
         value: otp
         description: OTP route, only numbers are passed in the SMS
+    default: false
     required: true
 
 webhooks:

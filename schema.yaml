@@ -8,7 +8,7 @@ properties:
     type: string
   service:
     type: string
-    enum: [Enrichment]
+    enum: [Enrichment, SMS Routes]
   solutions:
     type: array
     items:
@@ -20,7 +20,7 @@ properties:
       type: string
   type:
     type: string
-    enum: [mnp]
+    enum: [mnp, sms_routes]
   exclude_if_contact:
     type: array
     items:
@@ -33,7 +33,7 @@ properties:
       properties:
         type:
           type: string
-          enum: [boolean]
+          enum: [boolean, select]
         name:
           type: string
         description:
