@@ -1,10 +1,10 @@
-name: Docker Build and Push Middleware
+name: Docker Build and Push PingProphet
 
 on:
   push:
     branches: [ development, production ]
     paths:
-      - 'middleware/pingprophet/**'
+      - 'services/ping_prophet/**'
 
 jobs:
   build:
@@ -23,8 +23,8 @@ jobs:
         with:
           dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
           dockerhub_password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          image_name: ${{ github.ref_name == 'production' && 'slnww/middleware:latest' || 'slnww/middleware_dev:latest' }}
-          dockerfile: ./middleware/pingprophet/Dockerfile
+          image_name: ${{ github.ref_name == 'production' && 'slnww/ping_prophet:latest' || 'slnww/ping_prophet_dev:latest' }}
+          dockerfile: ./services/ping_prophet/docker/Dockerfile
           context: .
           update_production: ${{ github.ref_name == 'production' }}
           update_staging: ${{ github.ref_name == 'development' }}
