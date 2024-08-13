@@ -51,7 +51,7 @@ async def events_new(request: Request, background_tasks: BackgroundTasks):
     data = await request.json()
 
     try:
-        integration_filename = re.sub(r'[^a-zA-Z0-9]', '', data['integration_name'])
+        integration_filename = re.sub(r'[^a-zA-Z0-9]', '', data['class_name'])
 
         module = import_module(f'integrations.{integration_filename}')
         class_obj = getattr(module, integration_filename)
@@ -74,12 +74,12 @@ async def events_new(request: Request, background_tasks: BackgroundTasks):
         return {"ok": False, "message": str(e)}
 
 
-@app.post("/callback/{integration_name}")
-async def callback_new(request: Request, integration_name: str, background_tasks: BackgroundTasks):
+@app.post("/callback/{class_name}")
+async def callback_new(request: Request, class_name: str, background_tasks: BackgroundTasks):
     data = await request.json()
 
     try:
-        integration_filename = re.sub(r'[^a-zA-Z0-9]', '', integration_name)
+        integration_filename = re.sub(r'[^a-zA-Z0-9]', '', class_name)
 
         module = import_module(f'integrations.{integration_filename}')
         class_obj = getattr(module, integration_filename)
