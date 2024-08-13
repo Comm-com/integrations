@@ -33,7 +33,7 @@ properties:
       properties:
         type:
           type: string
-          enum: [boolean, select]
+          enum: [boolean, select, string]
         name:
           type: string
         description:

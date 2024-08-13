@@ -32,6 +32,11 @@ required_fields:
         description: OTP route, only numbers are passed in the SMS
     default: false
     required: true
+  - type: string
+    name: clicks_webhook_url
+    description: The URL to send the clicks
+    default: false
+    required: false
 
 webhooks:
   live: 'https://pingprophet.com/mnp-webhook'
