@@ -39,21 +39,11 @@ class SMSEdgeSMSRoutes(BaseIntegration):
                 "overdraft_limit": 0,
             }
         )
-        endpoint = await self.create_endpoint(
-            self.hub_token,
-            {
-                "team_id": data['team_id'],
-                "name": "Team ID: " + data['team_id'],
-                "username": f"se_{self.generate_random_string(6)}",
-                "password": self.generate_random_string(12),
-                "client_company_id": hub_company_id,
-                "sms_routing_plan_id": plan_id,
-                # "default_route_id": ?
-                "pricing_update_email": os.getenv('HUB_PRICING_EMAIL'),
-            }
-        )
 
-        # client account
+        endpoint_username = f"se_{self.generate_random_string(6)}"
+        endpoint_password = self.generate_random_string(12)
+
+        # first create client sms route to get sms route id
         company_id = await self.create_company(
             self.team_token,
             {
@@ -65,15 +55,32 @@ class SMSEdgeSMSRoutes(BaseIntegration):
         smpp = await self.create_smpp_connection({
             "url": os.getenv('HUB_SMPP_URL'),
             "port": 2775,
-            "username": endpoint['username'],
-            "password": endpoint['password']
+            "username": endpoint_username,
+            "password": endpoint_password,
         })
         sms_route = await self.create_sms_route({
             "name": "SMSEdge SMS Routes",
             "description": "Auto-created from SMSEdge integration",
             "company_id": company_id,
-            "smpp_connection_id": smpp['id'],
+            "connection_id": smpp['id'],
         })
+
+        # create hub endpoint
+        pricing_email = os.getenv('HUB_PRICING_EMAIL').split('@')
+        route_email = pricing_email[0] + "+" + sms_route['id'] + "@" + pricing_email[1]
+        endpoint = await self.create_endpoint(
+            self.hub_token,
+            {
+                "team_id": data['team_id'],
+                "name": "Team ID: " + data['team_id'],
+                "username": endpoint_username,
+                "password": endpoint_password,
+                "client_company_id": hub_company_id,
+                "sms_routing_plan_id": plan_id,
+                # "default_route_id": ?
+                "pricing_update_email": route_email,
+            }
+        )
 
         # trigger price update
         res_message = await self.endpoint_send_pricing_update(endpoint['id'])
@@ -187,7 +194,7 @@ class SMSEdgeSMSRoutes(BaseIntegration):
                 "Accept": "application/json",
                 "Authorization": f"Bearer {self.hub_token}",
             }
-            url = f"{self.url}/api/v1/sms/smpp/connections"
+            url = f"{self.url}/api/v1/sms/routing/routes/smpp-connections"
             self.logger.debug("Creating SMPP connection in Comm.com: %s (%s)", url, data)
             async with session.post(url, headers=headers, json=data) as resp:
                 res = await resp.json()
@@ -196,7 +203,7 @@ class SMSEdgeSMSRoutes(BaseIntegration):
                 if resp.status != 201:
                     raise ValueError("Failed to create SMPP connection in Comm.com")
 
-                return res
+                return res['data']
 
     async def create_sms_route(self, payload):
         timeout = aiohttp.ClientTimeout(total=5)
@@ -204,7 +211,7 @@ class SMSEdgeSMSRoutes(BaseIntegration):
             headers = {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
-                "Authorization": f"Bearer {self.hub_token}",
+                "Authorization": f"Bearer {self.team_token}",
             }
             url = f"{self.url}/api/v1/sms/routing/routes"
             self.logger.debug("Creating SMS route in Comm.com: %s (%s)", url, payload)
@@ -215,7 +222,7 @@ class SMSEdgeSMSRoutes(BaseIntegration):
                 if resp.status != 201:
                     raise ValueError("Failed to create SMS route in Comm.com")
 
-                return res
+                return res['data']
 
     async def endpoint_send_pricing_update(self, endpoint_id):
         timeout = aiohttp.ClientTimeout(total=5)
