@@ -25,6 +25,6 @@ jobs:
           dockerhub_password: ${{ secrets.DOCKERHUB_PASSWORD }}
           image_name: ${{ github.ref_name == 'production' && 'slnww/ping_prophet_service:latest' || 'slnww/ping_prophet_dev:latest' }}
           dockerfile: ./services/ping_prophet/docker/Dockerfile
-          context: .
+          context: ./services/ping_prophet
           update_production: ${{ github.ref_name == 'production' }}
           update_staging: ${{ github.ref_name == 'development' }}
