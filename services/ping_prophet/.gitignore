@@ -2,3 +2,4 @@
 /vendor
 /public/hot
 .env
+.DS_Store
