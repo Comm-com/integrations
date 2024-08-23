@@ -5,7 +5,6 @@ FROM python:3.9
 WORKDIR /app
 COPY . /app
 
-RUN ls -lah
 # Install the required dependencies
 RUN apt-get update && apt-get install -y git gnupg2 wget vim curl lsb-release
 
