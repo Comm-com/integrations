@@ -39,7 +39,6 @@ async def lifespan_wrapper(app):
     async with main_app_lifespan(app) as lifespan_state:
         yield lifespan_state
 
-    # .
     # shutdown
     await db.disconnect()
 
