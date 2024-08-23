@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "ping_prophet/service",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "Ping Prophet Service",
     "keywords": ["laravel", "framework"],
     "license": "MIT",
     "require": {
