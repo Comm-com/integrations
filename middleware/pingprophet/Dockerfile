@@ -12,4 +12,4 @@ RUN apt-get update && apt-get install -y git gnupg2 wget vim curl lsb-release
 
 RUN pip3 install --no-cache-dir -r requirements.txt
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "$APP_PORT"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "${APP_PORT}"]
