@@ -5,9 +5,11 @@ FROM python:3.9
 WORKDIR /app
 COPY . /app
 
+ARG APP_PORT=8080
+
 # Install the required dependencies
 RUN apt-get update && apt-get install -y git gnupg2 wget vim curl lsb-release
 
 RUN pip3 install --no-cache-dir -r requirements.txt
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "$APP_PORT"]
