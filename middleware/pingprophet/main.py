@@ -47,6 +47,9 @@ async def lifespan_wrapper(app):
 
 app.router.lifespan_context = lifespan_wrapper
 
+@app.get("/")
+async def root():
+    return {"status": "ok"}
 
 @app.post("/events")
 async def events_new(request: Request, background_tasks: BackgroundTasks):
@@ -105,7 +108,7 @@ async def callback_new(request: Request, class_name: str, background_tasks: Back
 
 @app.get("/health")
 async def health_check():
-    return {"ok": True, "message": "Service is healthy"}
+    return {"status": "ok", "message": "Service is healthy"}
 
 
 if __name__ == "__main__":
