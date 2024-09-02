@@ -1,7 +1,7 @@
 import './bootstrap';
 import '../css/app.css';
 
-import nuxtLabsTheme from 'nuxt-ui-vue/dist/theme/nuxtlabsTheme'
+import nuxtLabsTheme from './themes/nuxtlabsTheme'
 import install from 'nuxt-ui-vue'
 
 import { createApp, h } from 'vue';
