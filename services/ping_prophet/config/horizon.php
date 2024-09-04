@@ -100,8 +100,8 @@ return [
 
     'trim' => [
         'recent' => 60,
-        'pending' => 60,
-        'completed' => 60,
+        'pending' => 10080,
+        'completed' => 10080,
         'recent_failed' => 10080,
         'failed' => 10080,
         'monitored' => 10080,
@@ -203,7 +203,20 @@ return [
                 'balanceCooldown' => 3,
             ],
         ],
-
+        'staging' => [
+            'supervisor-1' => [
+                'maxProcesses' => 10,
+                'balanceMaxShift' => 1,
+                'balanceCooldown' => 3,
+            ],
+        ],
+        'dev' => [
+            'supervisor-1' => [
+                'maxProcesses' => 10,
+                'balanceMaxShift' => 1,
+                'balanceCooldown' => 3,
+            ],
+        ],
         'local' => [
             'supervisor-1' => [
                 'maxProcesses' => 3,
