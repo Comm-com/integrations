@@ -65,7 +65,7 @@ class SMSEdgeSMSRoutes(BaseIntegration):
             "description": "Auto-created from SMSEdge integration",
             "company_id": company_id,
             "connection_id": smpp['id'],
-            "clicks_webhook_url": clicks_webhook_url[0]['value'] if clicks_webhook_url is not None else None,
+            "clicks_webhook_url": clicks_webhook_url[0]['value'] if len(clicks_webhook_url) > 0 else None,
         })
 
         await self.create_route_rate_settings(sms_route['id'], {
