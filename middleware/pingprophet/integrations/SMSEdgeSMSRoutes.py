@@ -242,7 +242,7 @@ class SMSEdgeSMSRoutes(BaseIntegration):
                 "Accept": "application/json",
                 "Authorization": f"Bearer {self.team_token}",
             }
-            url = f"{self.url}/api/v1/sms/routing/routes/{sms_route_id}/rate-settings"
+            url = f"{self.url}/api/v1/sms/rate-parser/routes/{sms_route_id}/settings"
             self.logger.debug("Creating route rate settings in Comm.com: %s (%s)", url, payload)
             async with session.post(url, headers=headers, json=payload) as resp:
                 res = await resp.json()
