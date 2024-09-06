@@ -33,13 +33,13 @@ properties:
       properties:
         type:
           type: string
-          enum: [boolean, select, string]
+          enum: [boolean, string]
         name:
           type: string
         description:
           type: string
         default:
-          type: boolean
+          type: [boolean, string]
         required:
           type: boolean
       required: [type, name, description, default, required]

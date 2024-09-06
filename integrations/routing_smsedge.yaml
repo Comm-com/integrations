@@ -20,7 +20,7 @@ scopes:
     reason: Create a new SMPP connection for the SMS routes
 
 required_fields:
-  - type: select
+  - type: string
     name: traffic_type
     description: The type of route to create
     options:
@@ -30,12 +30,12 @@ required_fields:
       - name: OTP
         value: otp
         description: OTP route, only numbers are passed in the SMS
-    default: false
+    default: 'promotional'
     required: true
   - type: string
     name: clicks_webhook_url
     description: The URL to send the clicks
-    default: false
+    default: ''
     required: false
 
 webhooks:
