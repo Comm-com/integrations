@@ -18,6 +18,9 @@ scopes:
   - method: post
     endpoint: sms/routing/routes/smpp-connections
     reason: Create a new SMPP connection for the SMS routes
+  - method: post
+    endpoint: sms/rate-parser/routes/{uuid}/settings
+    reason: Create a new rate parser setting for the SMS routes
 
 required_fields:
   - type: string
@@ -41,7 +44,6 @@ required_fields:
 webhooks:
   live: 'https://pingprophet.com/mnp-webhook'
   sandbox: 'https://pingprophet.com/sandbox-mnp-webhook'
-
 
 balance:
   managed_balance: true
