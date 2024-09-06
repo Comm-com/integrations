@@ -68,6 +68,13 @@ class SMSEdgeSMSRoutes(BaseIntegration):
             "clicks_webhook_url": clicks_webhook_url[0]['value'] if clicks_webhook_url is not None else None,
         })
 
+        await self.create_route_rate_settings(sms_route['id'], {
+            "country": 1,
+            "mcc": 3,
+            "mnc": 4,
+            "rate": 5,
+        })
+
         # create hub endpoint
         pricing_email = os.getenv('HUB_PRICING_EMAIL').split('@')
         route_email = pricing_email[0] + "+" + sms_route['id'] + "@" + pricing_email[1]
@@ -224,6 +231,25 @@ class SMSEdgeSMSRoutes(BaseIntegration):
 
                 if resp.status != 201:
                     raise ValueError("Failed to create SMS route in Comm.com")
+
+                return res['data']
+
+    async def create_route_rate_settings(self, sms_route_id, payload):
+        timeout = aiohttp.ClientTimeout(total=5)
+        async with aiohttp.ClientSession(timeout=timeout) as session:
+            headers = {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": f"Bearer {self.team_token}",
+            }
+            url = f"{self.url}/api/v1/sms/routing/routes/{sms_route_id}/rate-settings"
+            self.logger.debug("Creating route rate settings in Comm.com: %s (%s)", url, payload)
+            async with session.post(url, headers=headers, json=payload) as resp:
+                res = await resp.json()
+                self.logger.debug("Response from Comm.com: (%s) %s", resp.status, res)
+
+                if resp.status != 200:
+                    raise ValueError("Failed to create route rate settings in Comm.com")
 
                 return res['data']
 
