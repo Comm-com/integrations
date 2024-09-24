@@ -12,12 +12,19 @@ use App\Services\LookupService;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class XConnectProvider extends BaseProvider
 {
     public function lookup(MnpRequestData $requestData): void
     {
         $url = str_replace('{number}', $requestData->number, config('services.xconnect.lookup_url'));
+
+        Log::debug('XConnectProvider lookup', [
+            'url' => $url,
+            'requestData' => $requestData,
+        ]);
+
         $response = Http::withHeaders($this->getHeaders())
             ->timeout(10)
             ->throw(function (Response $response, RequestException $e) use ($requestData) {
