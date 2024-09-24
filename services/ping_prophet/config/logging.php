@@ -1,5 +1,6 @@
 <?php
 
+use Monolog\Formatter\JsonFormatter;
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
@@ -56,6 +57,14 @@ return [
             'driver' => 'stack',
             'channels' => explode(',', env('LOG_STACK', 'single')),
             'ignore_exceptions' => false,
+        ],
+
+        'stack_prod' => [
+            'driver' => 'stack',
+            'channels' => ['stderr'],
+            'level' => env('LOG_LEVEL', 'debug'),
+            'ignore_exceptions' => false,
+            'formatter' => JsonFormatter::class,
         ],
 
         'single' => [
