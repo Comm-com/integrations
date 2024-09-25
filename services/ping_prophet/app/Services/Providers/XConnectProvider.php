@@ -39,6 +39,10 @@ class XConnectProvider extends BaseProvider
             })
             ->get($url);
 
+        Log::debug('XConnectProvider response', [
+            'response' => $response->json() ?? $response->body(),
+        ]);
+
         if (!$response->ok()) {
             $this->storeResult(
                 requestData: $requestData,
