@@ -252,20 +252,15 @@ class PingprophetMNP(BaseIntegration):
             response = requests.post(f"{os.getenv('COMM_URL')}/api/v1/contacts/upsert", json=req, headers=headers)
             self.logger.info("Contact patch response (team id: %s), Response: %s", pp_request['team_id'],
                              response.json())
-            placeholders = ', '.join(':id' + str(i) for i in range(len(ids)))
+            placeholders = ", ".join([f":id{i}" for i in range(len(ids))])
+            values = {f"id{i}": id for i, id in enumerate(ids)}
 
             if response.status_code != 200:
-                query = "update ping_prophet_mnp_results set status = 'failed' where id in ({placeholders});"
-                values = {
-                    f"id{i}": id for i, id in enumerate(ids)
-                }
+                query = f"update ping_prophet_mnp_results set status = 'failed' where id in ({placeholders})"
                 await self.db.execute(query, values)
                 continue
 
-            query = f"update ping_prophet_mnp_results set status = 'completed' where id in ({placeholders});"
-            values = {
-                f"id{i}": id for i, id in enumerate(ids)
-            }
+            query = f"update ping_prophet_mnp_results set status = 'completed' where id in ({placeholders})"
             await self.db.execute(query, values)
 
             await asyncio.sleep(1)
