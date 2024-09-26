@@ -86,6 +86,7 @@ class XConnectProvider extends BaseProvider
             'mcc' => $resultData->mcc,
             'mnc' => $resultData->mnc,
             'country_code' => $resultData->country_code,
+            'brand_name' => $resultData->carrier_name,
             'reason_code' => $resultData->status->name,
             'raw_response' => $response,
         ]);
