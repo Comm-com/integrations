@@ -233,7 +233,7 @@ class PingprophetMNP(BaseIntegration):
                     "phone_is_good_reason": 1 if result['verified'] == 1 else 2,
                     "mcc": result['mcc'],
                     "mnc": result['mnc'],
-                    "brand_name": result['brand_name'],
+                    "network_brand": result['brand_name'],
                     "country": result['country_code'],
                     "reason_code": result['reason_code'],
                     "raw_response": result['raw_response'],
