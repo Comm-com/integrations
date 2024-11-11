@@ -242,6 +242,7 @@ class PingprophetMNP(BaseIntegration):
 
             req = {
                 "team_id": str(pp_request['team_id']),
+                "webhook_request_id": str(pp_request['webhook_request_id']),
                 "contacts": contacts,
             }
             headers = {
