@@ -250,6 +250,8 @@ class PingprophetMNP(BaseIntegration):
                 "Content-Type": "application/json",
                 "Accept": "application/json",
             }
+            self.logger.debug("Patching contacts (team id: %s, webhook request id: %s)", pp_request['team_id'],
+                              pp_request['webhook_request_id'])
             response = requests.post(f"{os.getenv('COMM_URL')}/api/v1/contacts/upsert", json=req, headers=headers)
             self.logger.info("Contact patch response (team id: %s), Response: %s", pp_request['team_id'],
                              response.json())
