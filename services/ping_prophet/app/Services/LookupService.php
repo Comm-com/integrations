@@ -105,9 +105,8 @@ class LookupService
 
     public function bill_user(ApiRequest $apiRequest): void
     {
-        $metaData = $apiRequest->getMetaData();
         $totalSuccess = LookupResult::where('api_request_id', $apiRequest->id)
-            ->where('status', '!=', LookupResultStatusEnum::success->value)
+            ->where('status', LookupResultStatusEnum::success->value)
             ->count();
 
         if ($totalSuccess === 0) {
@@ -115,6 +114,7 @@ class LookupService
         }
 
         $cost = $this->calculateCost($totalSuccess, $apiRequest->request_type);
+        $metaData = $apiRequest->getMetaData();
         $metaData->cost = $cost;
         $metaData->billed_at = now()->toDateTimeString();
         $apiRequest->setMetaData($metaData);
