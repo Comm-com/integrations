@@ -5,11 +5,17 @@ import os
 
 class DatabaseWrapper:
     def __init__(self):
-        db_host = os.getenv('DB_HOST', 'localhost')
+        app_env = os.getenv('APP_ENV', 'local')
+        if app_env == 'production':
+            db_host = os.getenv('POSTGRES_HOST_PRODUCTION', 'localhost')
+            db_port = os.getenv('POSTGRES_PORT_PRODUCTION', '5432')
+        else:
+            db_host = os.getenv('DB_HOST', 'localhost')
+            db_port = os.getenv('DB_PORT', '5432')
+
         db_name = os.getenv('DB_DATABASE', 'middleware')
         db_user = os.getenv('DB_USERNAME', 'middleware')
         db_password = os.getenv('DB_PASSWORD', 'middleware')
-        db_port = os.getenv('DB_PORT', '5432')
         self.database = Database(f"postgresql+asyncpg://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}")
         self.metadata = sqlalchemy.MetaData()
         self.dialect = sqlalchemy.dialects.postgresql.dialect()
