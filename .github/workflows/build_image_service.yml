@@ -8,7 +8,8 @@ on:
 
 jobs:
   build:
-    runs-on: [ 'tools', 'builder' ]
+    # Native arm64 (prod arch) instead of QEMU arm64 on the x86 tools runner.
+    runs-on: ubuntu-24.04-arm
     steps:
       - uses: actions/checkout@v4
       - name: Checkout private action
