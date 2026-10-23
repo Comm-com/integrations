@@ -1,3 +1,4 @@
+# Needs base_laravel with PHP >= 8.3.36 (CVE-2026-109618 / CVE-2026-109619).
 FROM slnww/base_laravel:latest
 COPY . /var/www/html
 USER root
